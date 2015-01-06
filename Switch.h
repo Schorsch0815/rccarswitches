@@ -29,24 +29,24 @@ public:
 
     inline void setState( SwitchState_t pState )
     {
-        m_state = pState;
+        mstate = pState;
     }
 
     inline SwitchState_t getState( void )
     {
-        return m_state;
+        return mstate;
     }
 
     inline SwitchState_t getInvertedState( void )
     {
-        return (ON == m_state) ? OFF : ON;;
+        return (ON == mstate) ? OFF : ON;;
     }
 
 protected:
 
 private:
 
-    SwitchState_t m_state;
+    SwitchState_t mstate;
 };
 
 #endif /* SWITCH_H_ */

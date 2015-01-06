@@ -8,7 +8,7 @@
 
 #include "PinSwitch.h"
 
-PinSwitch::PinSwitch(unsigned int pPin) : Switch(), m_inputPin(pPin)
+PinSwitch::PinSwitch(unsigned int pPin) : Switch(), minputPin(pPin)
 {
 }
 
@@ -18,7 +18,7 @@ PinSwitch::~PinSwitch()
 
 void PinSwitch::setup(void)
 {
-    pinMode(m_inputPin,INPUT);
+    pinMode(minputPin,INPUT);
 }
 
 
