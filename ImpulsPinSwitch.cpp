@@ -55,7 +55,7 @@ unsigned long ImpulsPinSwitch::getImpulseActiveDuration()
         }
 
         // in case impulse is active we return at least 1 milliseconds for duration
-        return max(1, mIllis() - mImpulseChangeTimestamp);
+        return max(1, millis() - mImpulseChangeTimestamp);
     }
     else
     {

@@ -22,7 +22,7 @@ public:
 
     inline unsigned int getCurrentStep()
     {
-        return mcurrentStep;
+        return mCurrentStep;
     }
 
     void setState(SwitchState_t pState);
