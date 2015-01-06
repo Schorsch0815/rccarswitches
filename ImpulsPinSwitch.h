@@ -24,17 +24,17 @@ protected:
 
     inline unsigned long getMinImpulseDuration()
     {
-        return m_minImpulseDuration;
+        return mminImpulseDuration;
     }
 
 protected:
-    bool m_wasSwitched;
+    bool mwasSwitched;
 
 private:
-    unsigned long m_impulseChangeTimestamp;
-    unsigned long m_minImpulseDuration;
-    unsigned long m_impulseCooldown;
-    bool m_impulseActive;
+    unsigned long mimpulseChangeTimestamp;
+    unsigned long mminImpulseDuration;
+    unsigned long mimpulseCooldown;
+    bool mimpulseActive;
 };
 
 #endif /* IMPULSPINSWITCH_H_ */

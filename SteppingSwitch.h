@@ -22,14 +22,14 @@ public:
 
     inline unsigned int getCurrentStep()
     {
-        return m_currentStep;
+        return mcurrentStep;
     }
 
     void setState(SwitchState_t pState);
 
 private:
-    unsigned int m_numberOfSteps;
-    unsigned int m_currentStep;
+    unsigned int mnumberOfSteps;
+    unsigned int mcurrentStep;
 };
 
 #endif /* STEPPINGSWITCH_H_ */

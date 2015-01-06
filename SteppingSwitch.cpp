@@ -9,7 +9,7 @@
 
 SteppingSwitch::SteppingSwitch(unsigned int pNumberOfSteps, unsigned int pPin, unsigned long pImpulseDuration,
                                unsigned long pImpluseCooldown) :
-        ImpulsPinSwitch(pPin, pImpulseDuration, pImpluseCooldown), m_numberOfSteps(pNumberOfSteps), m_currentStep(0)
+        ImpulsPinSwitch(pPin, pImpulseDuration, pImpluseCooldown), mnumberOfSteps(pNumberOfSteps), mcurrentStep(0)
 {
 }
 
@@ -27,7 +27,7 @@ void SteppingSwitch::setState( SwitchState_t pState )
     if (OFF == pState)
     {
         ImpulsPinSwitch::setState(pState);
-        m_currentStep = 0;
+        mcurrentStep = 0;
     }
 }
 
@@ -36,16 +36,16 @@ void SteppingSwitch::refresh(void)
     if (getMinImpulseDuration() < getImpulseActiveDuration())
     {
         // to prevent toggling when impulse is still "active" but switch was changed during this impulse
-        if (!m_wasSwitched)
+        if (!mwasSwitched)
         {
             // toggle switch state
-            ++m_currentStep;
-            m_wasSwitched = true;
+            ++mcurrentStep;
+            mwasSwitched = true;
 
-            if (m_currentStep > m_numberOfSteps)
+            if (mcurrentStep > mnumberOfSteps)
             {
                 ImpulsPinSwitch::setState(OFF);
-                m_currentStep = 0;
+                mcurrentStep = 0;
             }
             else
             {
@@ -55,7 +55,7 @@ void SteppingSwitch::refresh(void)
     }
     else
     {
-        m_wasSwitched = false;
+        mwasSwitched = false;
     }
 }
 
