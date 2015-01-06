@@ -11,8 +11,8 @@
 #include <Arduino.h>
 
 ImpulsPinSwitch::ImpulsPinSwitch(unsigned int pPin, unsigned long pMinImpulsDuration, unsigned long pImpluseCooldown) :
-        PinSwitch(pPin), mwasSwitched(false), mimpulseChangeTimestamp(pMinImpulsDuration), mminImpulseDuration(ULONG_MAX), mimpulseCooldown(
-                pImpluseCooldown), mimpulseActive(false)
+        PinSwitch(pPin), mWasSwitched(false), mImpulseChangeTimestamp(pMinImpulsDuration), mMinImpulseDuration(ULONG_MAX), mImpulseCooldown(
+                pImpluseCooldown), mImpulseActive(false)
 {
 }
 
@@ -22,19 +22,19 @@ ImpulsPinSwitch::~ImpulsPinSwitch()
 
 void ImpulsPinSwitch::refresh(void)
 {
-    if (mminImpulseDuration < getImpulseActiveDuration())
+    if (mMinImpulseDuration < getImpulseActiveDuration())
     {
         // to prevent toggling when impulse is still "active" but switch was changed during this impulse
-        if (!mwasSwitched)
+        if (!mWasSwitched)
         {
             // toggle switch state
             setState(getInvertedState());
-            mwasSwitched = true;
+            mWasSwitched = true;
         }
     }
     else
     {
-        mwasSwitched = false;
+        mWasSwitched = false;
     }
 }
 
@@ -42,27 +42,27 @@ unsigned long ImpulsPinSwitch::getImpulseActiveDuration()
 {
     if (digitalRead(getInputPin()))
     {
-        if (!mimpulseActive)
+        if (!mImpulseActive)
         {
-            // switch cannot be retriggered before defiended cool down. mimpulseChangeTimestamp has value of last release action
-            if (mimpulseChangeTimestamp < mimpulseCooldown)
+            // switch cannot be retriggered before defiended cool down. mImpulseChangeTimestamp has value of last release action
+            if (mImpulseChangeTimestamp < mImpulseCooldown)
             {
                 return 0;
             }
 
-            mimpulseActive = true;
-            mimpulseChangeTimestamp = millis();
+            mImpulseActive = true;
+            mImpulseChangeTimestamp = millis();
         }
 
         // in case impulse is active we return at least 1 milliseconds for duration
-        return max(1, millis() - mimpulseChangeTimestamp);
+        return max(1, mIllis() - mImpulseChangeTimestamp);
     }
     else
     {
-        if (mimpulseActive)
+        if (mImpulseActive)
         {
-            mimpulseActive = false;
-            mimpulseChangeTimestamp = millis();
+            mImpulseActive = false;
+            mImpulseChangeTimestamp = millis();
         }
     }
     return 0;

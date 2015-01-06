@@ -28,8 +28,8 @@ public:
     void setState(SwitchState_t pState);
 
 private:
-    unsigned int mnumberOfSteps;
-    unsigned int mcurrentStep;
+    unsigned int mNumberOfSteps;
+    unsigned int mCurrentStep;
 };
 
 #endif /* STEPPINGSWITCH_H_ */

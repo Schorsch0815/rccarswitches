@@ -8,7 +8,7 @@
 #include "Switch.h"
 
 Switch::Switch(void) :
-        mstate(OFF)
+        mState(OFF)
 {
 }
 

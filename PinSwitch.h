@@ -23,11 +23,11 @@ public:
 protected:
     inline unsigned int getInputPin()
     {
-        return minputPin;
+        return mInputPin;
     }
 
 private:
-    unsigned int minputPin;
+    unsigned int mInputPin;
 };
 
 #endif /* PINSWITCH_H_ */
