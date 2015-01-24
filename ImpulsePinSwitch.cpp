@@ -5,22 +5,21 @@
  *      Author: Jochen
  */
 
-#include "ImpulsPinSwitch.h"
-
 #include <limits.h>
 #include <Arduino.h>
+#include "ImpulsePinSwitch.h"
 
-ImpulsPinSwitch::ImpulsPinSwitch(unsigned int pPin, unsigned long pMinImpulsDuration, unsigned long pImpluseCooldown) :
+ImpulsePinSwitch::ImpulsePinSwitch(unsigned int pPin, unsigned long pMinImpulsDuration, unsigned long pImpluseCooldown) :
         PinSwitch(pPin), mWasSwitched(false), mImpulseChangeTimestamp(pMinImpulsDuration), mMinImpulseDuration(ULONG_MAX), mImpulseCooldown(
                 pImpluseCooldown), mImpulseActive(false)
 {
 }
 
-ImpulsPinSwitch::~ImpulsPinSwitch()
+ImpulsePinSwitch::~ImpulsePinSwitch()
 {
 }
 
-void ImpulsPinSwitch::refresh(void)
+void ImpulsePinSwitch::refresh(void)
 {
     if (mMinImpulseDuration < getImpulseActiveDuration())
     {
@@ -38,7 +37,7 @@ void ImpulsPinSwitch::refresh(void)
     }
 }
 
-unsigned long ImpulsPinSwitch::getImpulseActiveDuration()
+unsigned long ImpulsePinSwitch::getImpulseActiveDuration()
 {
     if (digitalRead(getInputPin()))
     {

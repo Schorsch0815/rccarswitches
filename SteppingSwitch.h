@@ -8,9 +8,9 @@
 #ifndef STEPPINGSWITCH_H_
 #define STEPPINGSWITCH_H_
 
-#include "ImpulsPinSwitch.h"
+#include "ImpulsePinSwitch.h"
 
-class SteppingSwitch : public ImpulsPinSwitch
+class SteppingSwitch : public ImpulsePinSwitch
 {
 public:
     SteppingSwitch(unsigned int pNumberOfSteps, unsigned int pPin, unsigned long pImpulseDuration,
