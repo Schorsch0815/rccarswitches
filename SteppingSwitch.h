@@ -8,12 +8,12 @@
 #ifndef STEPPINGSWITCH_H_
 #define STEPPINGSWITCH_H_
 
-#include "ImpulsPinSwitch.h"
+#include "ImpulseSwitch.h"
 
-class SteppingSwitch : public ImpulsPinSwitch
+class SteppingSwitch : public ImpulseSwitch
 {
 public:
-    SteppingSwitch(unsigned int pNumberOfSteps, unsigned int pPin, unsigned long pImpulseDuration,
+    SteppingSwitch(const Condition & pSwitchCondition, unsigned int pNumberOfSteps, unsigned long pImpulseDuration,
                    unsigned long pImpluseCooldown);
     virtual ~SteppingSwitch();
 

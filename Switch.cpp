@@ -12,7 +12,18 @@ Switch::Switch(void) :
 {
 }
 
+
 Switch::~Switch(void)
+{
+}
+
+
+void Switch::setup(void)
+{
+}
+
+
+void Switch::refresh(void)
 {
 }
 

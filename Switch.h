@@ -19,13 +19,9 @@ public:
     Switch();
     virtual ~Switch();
 
-    virtual void setup(void)
-    {
-    }
+    virtual void setup(void);
 
-    virtual void refresh(void)
-    {
-    }
+    virtual void refresh(void);
 
     inline void setState( SwitchState_t pState )
     {
@@ -42,10 +38,7 @@ public:
         return (ON == mState) ? OFF : ON;;
     }
 
-protected:
-
 private:
-
     SwitchState_t mState;
 };
 

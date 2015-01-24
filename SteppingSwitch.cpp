@@ -7,9 +7,9 @@
 
 #include "SteppingSwitch.h"
 
-SteppingSwitch::SteppingSwitch(unsigned int pNumberOfSteps, unsigned int pPin, unsigned long pImpulseDuration,
+SteppingSwitch::SteppingSwitch(const Condition & pSwitchCondition,unsigned int pNumberOfSteps, unsigned long pImpulseDuration,
                                unsigned long pImpluseCooldown) :
-        ImpulsPinSwitch(pPin, pImpulseDuration, pImpluseCooldown), mNumberOfSteps(pNumberOfSteps), mCurrentStep(0)
+        ImpulseSwitch(pSwitchCondition, pImpulseDuration, pImpluseCooldown), mNumberOfSteps(pNumberOfSteps), mCurrentStep(0)
 {
 }
 
@@ -19,14 +19,14 @@ SteppingSwitch::~SteppingSwitch()
 
 void SteppingSwitch::setup()
 {
-    ImpulsPinSwitch::setup();
+    ImpulseSwitch::setup();
 }
 
 void SteppingSwitch::setState( SwitchState_t pState )
 {
     if (OFF == pState)
     {
-        ImpulsPinSwitch::setState(pState);
+        ImpulseSwitch::setState(pState);
         mCurrentStep = 0;
     }
 }
@@ -44,12 +44,12 @@ void SteppingSwitch::refresh(void)
 
             if (mCurrentStep > mNumberOfSteps)
             {
-                ImpulsPinSwitch::setState(OFF);
+                ImpulseSwitch::setState(OFF);
                 mCurrentStep = 0;
             }
             else
             {
-                ImpulsPinSwitch::setState(ON);
+                ImpulseSwitch::setState(ON);
             }
         }
     }

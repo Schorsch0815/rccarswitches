@@ -8,13 +8,12 @@
 #ifndef IMPULSPINSWITCH_H_
 #define IMPULSPINSWITCH_H_
 
-#include "PinSwitch.h"
+#include "ConditionSwitch.h"
 
-class ImpulsPinSwitch : public PinSwitch
+class ImpulseSwitch : public ConditionSwitch
 {
 public:
-    ImpulsPinSwitch(unsigned int pPin, unsigned long pImpulseDuration, unsigned long pImpluseCooldown);
-    virtual ~ImpulsPinSwitch();
+    ImpulseSwitch(Condition * pSwitchCondition, unsigned long pMinImpulsDuration, unsigned long pImpluseCooldown);
 
     virtual void refresh(void);
 
@@ -25,6 +24,14 @@ protected:
     inline unsigned long getMinImpulseDuration()
     {
         return mMinImpulseDuration;
+    }
+
+private:
+    ImpulseSwitch() :
+            mWasSwitched(false), mImpulseChangeTimestamp(0), mMinImpulseDuration(0), mImpulseCooldown(0), mImpulseActive(
+                    false)
+    {
+        // no default constructor for switch with Predicate
     }
 
 protected:
