@@ -9,7 +9,7 @@
 
 SteppingSwitch::SteppingSwitch(unsigned int pNumberOfSteps, unsigned int pPin, unsigned long pImpulseDuration,
                                unsigned long pImpluseCooldown) :
-        ImpulsPinSwitch(pPin, pImpulseDuration, pImpluseCooldown), mNumberOfSteps(pNumberOfSteps), mCurrentStep(0)
+        ImpulsePinSwitch(pPin, pImpulseDuration, pImpluseCooldown), mNumberOfSteps(pNumberOfSteps), mCurrentStep(0)
 {
 }
 
@@ -19,14 +19,14 @@ SteppingSwitch::~SteppingSwitch()
 
 void SteppingSwitch::setup()
 {
-    ImpulsPinSwitch::setup();
+    ImpulsePinSwitch::setup();
 }
 
 void SteppingSwitch::setState( SwitchState_t pState )
 {
     if (OFF == pState)
     {
-        ImpulsPinSwitch::setState(pState);
+        ImpulsePinSwitch::setState(pState);
         mCurrentStep = 0;
     }
 }
@@ -44,12 +44,12 @@ void SteppingSwitch::refresh(void)
 
             if (mCurrentStep > mNumberOfSteps)
             {
-                ImpulsPinSwitch::setState(OFF);
+                ImpulsePinSwitch::setState(OFF);
                 mCurrentStep = 0;
             }
             else
             {
-                ImpulsPinSwitch::setState(ON);
+                ImpulsePinSwitch::setState(ON);
             }
         }
     }

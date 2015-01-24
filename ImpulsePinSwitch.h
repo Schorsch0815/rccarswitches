@@ -10,11 +10,11 @@
 
 #include "PinSwitch.h"
 
-class ImpulsPinSwitch : public PinSwitch
+class ImpulsePinSwitch : public PinSwitch
 {
 public:
-    ImpulsPinSwitch(unsigned int pPin, unsigned long pImpulseDuration, unsigned long pImpluseCooldown);
-    virtual ~ImpulsPinSwitch();
+    ImpulsePinSwitch(unsigned int pPin, unsigned long pImpulseDuration, unsigned long pImpluseCooldown);
+    virtual ~ImpulsePinSwitch();
 
     virtual void refresh(void);
 
