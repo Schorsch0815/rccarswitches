@@ -8,7 +8,8 @@
 
 #include "ConditionSwitch.h"
 
-ConditionSwitch::ConditionSwitch( Condition * pSwitchCondition) : Switch(), mSwitchCondition(pSwitchCondition)
+ConditionSwitch::ConditionSwitch(Condition * pSwitchCondition, void *pParam) :
+        Switch(), mSwitchCondition(pSwitchCondition), mParam(pParam)
 {
 }
 

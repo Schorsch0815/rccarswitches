@@ -12,13 +12,13 @@
 
 #include "Switch.h"
 
-typedef bool Condition(void);
+typedef bool Condition(void * pThis);
 
 class ConditionSwitch : public Switch
 {
 
 public:
-    ConditionSwitch(Condition * pSwitchCondition);
+    ConditionSwitch(Condition * pSwitchCondition, void *pParam);
 
     virtual void refresh(void);
 
@@ -26,17 +26,18 @@ protected:
 
     inline bool evaluateCondition(void)
     {
-        return mSwitchCondition();
+        return mSwitchCondition(mParam);
     }
 
 private:
-    ConditionSwitch() : mSwitchCondition(NULL)
+    ConditionSwitch() : mSwitchCondition(NULL), mParam(NULL)
     {
         // no default constructor for switch with Predicate
     }
 
 private:
     Condition * mSwitchCondition;
+    void *mParam;
 };
 
 #endif /* SWITCH_H_ */

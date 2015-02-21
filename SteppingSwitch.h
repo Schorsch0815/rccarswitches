@@ -13,7 +13,7 @@
 class SteppingSwitch : public ImpulseSwitch
 {
 public:
-    SteppingSwitch(const Condition & pSwitchCondition, unsigned int pNumberOfSteps, unsigned long pImpulseDuration,
+    SteppingSwitch(Condition * pSwitchCondition, void *pParam, unsigned int pNumberOfSteps, unsigned long pImpulseDuration,
                    unsigned long pImpluseCooldown);
     virtual ~SteppingSwitch();
 

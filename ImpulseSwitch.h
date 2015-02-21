@@ -13,7 +13,7 @@
 class ImpulseSwitch : public ConditionSwitch
 {
 public:
-    ImpulseSwitch(Condition * pSwitchCondition, unsigned long pMinImpulsDuration, unsigned long pImpluseCooldown);
+    ImpulseSwitch(Condition * pSwitchCondition, void *pParam, unsigned long pMinImpulsDuration, unsigned long pImpluseCooldown);
 
     virtual void refresh(void);
 
@@ -27,7 +27,7 @@ protected:
     }
 
 private:
-    ImpulseSwitch() :
+    ImpulseSwitch() : ConditionSwitch(NULL, NULL),
             mWasSwitched(false), mImpulseChangeTimestamp(0), mMinImpulseDuration(0), mImpulseCooldown(0), mImpulseActive(
                     false)
     {
