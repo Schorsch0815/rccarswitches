@@ -18,36 +18,45 @@
  *
  * --------------------------------------------------------------------*/
 
-#include "Switch.h"
+#include "gtest/gtest.h"
 
-Switch::Switch(void) :
-        mState(OFF)
-{
+#include "../Switch.h"
+
+// Tests Switch setState and getState.
+TEST(SwitchTest, SetGet) {
+
+    Switch s1;
+
+    EXPECT_EQ(Switch::OFF,s1.getState());
+
+    s1.setState(Switch::ON);
+    EXPECT_EQ(Switch::ON,s1.getState());
+
+    s1.setState(Switch::OFF);
+    EXPECT_EQ(Switch::OFF,s1.getState());
 }
 
 
-Switch::~Switch(void)
-{
+// Tests Switch setup do nothing.
+TEST(SwitchTest, Setup) {
+
+    Switch s1;
+
+    EXPECT_EQ(Switch::OFF,s1.getState());
+
+    s1.setup();
+    EXPECT_EQ(Switch::OFF,s1.getState());
+}
+
+// Tests Switch setup do nothing.
+TEST(SwitchTest, Refresh) {
+
+    Switch s1;
+
+    EXPECT_EQ(Switch::OFF,s1.getState());
+
+    s1.refresh();
+    EXPECT_EQ(Switch::OFF,s1.getState());
 }
 
 
-/**
- * This implementation do nothing for the base class, because no special initialization is needed.
- */
-void Switch::setup(void)
-{
-}
-
-
-/**
- * This implementation do nothing for the base class, because no special handling is needed to update the switch state.
- * The only way to change the state of the switch is to call #setState.
- */
-void Switch::refresh(void)
-{
-}
-
-void Switch::setState( SwitchState_t pState )
-{
-    mState = pState;
-}

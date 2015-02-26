@@ -18,36 +18,10 @@
  *
  * --------------------------------------------------------------------*/
 
-#include "Switch.h"
 
-Switch::Switch(void) :
-        mState(OFF)
-{
-}
+#include "gtest/gtest.h"
 
-
-Switch::~Switch(void)
-{
-}
-
-
-/**
- * This implementation do nothing for the base class, because no special initialization is needed.
- */
-void Switch::setup(void)
-{
-}
-
-
-/**
- * This implementation do nothing for the base class, because no special handling is needed to update the switch state.
- * The only way to change the state of the switch is to call #setState.
- */
-void Switch::refresh(void)
-{
-}
-
-void Switch::setState( SwitchState_t pState )
-{
-    mState = pState;
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

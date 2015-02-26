@@ -18,36 +18,21 @@
  *
  * --------------------------------------------------------------------*/
 
-#include "Switch.h"
+#ifndef UNITTESTS_ARDUINO_H_
+#define UNITTESTS_ARDUINO_H_
 
-Switch::Switch(void) :
-        mState(OFF)
+long millis();
+
+
+void millisleep(long usec);
+
+//#define max(a,b) ((a) > (b) ? (a) : (b))
+
+
+template <typename T>
+const T max(const T &a, const T &b)
 {
+    return a > b ? a : b;
 }
 
-
-Switch::~Switch(void)
-{
-}
-
-
-/**
- * This implementation do nothing for the base class, because no special initialization is needed.
- */
-void Switch::setup(void)
-{
-}
-
-
-/**
- * This implementation do nothing for the base class, because no special handling is needed to update the switch state.
- * The only way to change the state of the switch is to call #setState.
- */
-void Switch::refresh(void)
-{
-}
-
-void Switch::setState( SwitchState_t pState )
-{
-    mState = pState;
-}
+#endif /* UNITTESTS_ARDUINO_H_ */
