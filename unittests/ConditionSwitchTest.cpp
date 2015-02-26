@@ -18,36 +18,40 @@
  *
  * --------------------------------------------------------------------*/
 
-#include "Switch.h"
+#include "gtest/gtest.h"
 
-Switch::Switch(void) :
-        mState(OFF)
+#include "../ConditionSwitch.h"
+
+class SimpleCondition : public Condition
 {
+public:
+    SimpleCondition() : Condition(),mValue(true)
+    {
+    }
+
+    virtual bool operator()();
+
+    bool mValue;
+};
+
+bool SimpleCondition::operator()()
+{
+    return mValue;
 }
 
 
-Switch::~Switch(void)
+// Tests Switch setState and getState.
+TEST(ConditionSwitchTest, SetGet)
 {
-}
+    SimpleCondition lCondition;
 
+    ConditionSwitch s1(lCondition);
 
-/**
- * This implementation do nothing for the base class, because no special initialization is needed.
- */
-void Switch::setup(void)
-{
-}
+    s1.refresh();
+    EXPECT_EQ(Switch::ON,s1.getState());
 
+    lCondition.mValue = false;
+    s1.refresh();
 
-/**
- * This implementation do nothing for the base class, because no special handling is needed to update the switch state.
- * The only way to change the state of the switch is to call #setState.
- */
-void Switch::refresh(void)
-{
-}
-
-void Switch::setState( SwitchState_t pState )
-{
-    mState = pState;
+    EXPECT_EQ(Switch::OFF,s1.getState());
 }

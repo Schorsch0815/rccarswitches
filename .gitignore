@@ -26,3 +26,11 @@
 *.exe
 *.out
 *.app
+/Debug Unittest/
+/Debug/
+
+# Doxygen documentation
+/doc/
+
+# Markdown outout
+*.md.html

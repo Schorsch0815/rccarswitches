@@ -18,36 +18,46 @@
  *
  * --------------------------------------------------------------------*/
 
-#include "Switch.h"
 
-Switch::Switch(void) :
-        mState(OFF)
+#include "Arduino.h"
+
+#include <cstdlib>
+#include <sys/time.h>
+#include <cstdio>
+
+long millis()
 {
+    static struct timeval sInitialTimeVal;
+    static bool sIsInitialized = false;
+
+    if (!sIsInitialized)
+    {
+        sIsInitialized = true;
+        gettimeofday(&sInitialTimeVal,NULL);
+    }
+
+    struct timeval lTimeVal;
+
+    gettimeofday(&lTimeVal,NULL);
+
+    return (lTimeVal.tv_sec - sInitialTimeVal.tv_sec) * 1000 + (lTimeVal.tv_usec - sInitialTimeVal.tv_usec) / 1000;
 }
 
 
-Switch::~Switch(void)
+#include <windows.h>
+
+void millisleep(long usec)
 {
+    HANDLE timer;
+    LARGE_INTEGER ft;
+
+    ft.QuadPart = -(10*usec*1000); // Convert to 100 nanosecond interval, negative value indicates relative time
+
+    timer = CreateWaitableTimer(NULL, TRUE, NULL);
+    SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0);
+    WaitForSingleObject(timer, INFINITE);
+    CloseHandle(timer);
 }
 
 
-/**
- * This implementation do nothing for the base class, because no special initialization is needed.
- */
-void Switch::setup(void)
-{
-}
 
-
-/**
- * This implementation do nothing for the base class, because no special handling is needed to update the switch state.
- * The only way to change the state of the switch is to call #setState.
- */
-void Switch::refresh(void)
-{
-}
-
-void Switch::setState( SwitchState_t pState )
-{
-    mState = pState;
-}

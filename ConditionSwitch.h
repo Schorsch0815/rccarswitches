@@ -18,38 +18,34 @@
  *
  * --------------------------------------------------------------------*/
 
-#ifndef SWITCH_H_
-#define SWITCH_H_
+#ifndef CONDITIONSWITCH_H_
+#define CONDITIONSWITCH_H_
+
+#include <stdio.h>
+
+#include "Switch.h"
+#include "Condition.h"
 
 /**
- * The base class for a plain simple switch. Simple switches maintains a \ref SwitchState_t,
- * which can hold different values.
- *
+ * This class provides a switch where the status change can be influenced by evaluating
+ * a condition. When creating a switch a Condition object can be passed, which will be
+ * evaluated for each refresh. When evaluated condition returns true the state of the
+ * switch changes to ON and OFF otherwise.
  */
-class Switch
+class ConditionSwitch : public Switch
 {
+
 public:
     /**
-     * Enum, which represents state of the switch
+     * Constructor. It requires a condition object, which will be evaluated to determine
+     * the state of the switch.
+     *
+     * @param pSwitchCondition condition object
      */
-    typedef enum
-    {
-        OFF,
-        ON
-    } SwitchState_t;
+    ConditionSwitch(Condition & pSwitchCondition);
 
     /**
-     * Constructor
-     */
-    Switch();
-
-    /**
-     * Destructor
-     */
-    virtual ~Switch();
-
-    /**
-     * Sets up the switch. Has to be called before the switch can be used.
+     *  Sets up the switch. Has to be called before the switch can be used.
      */
     virtual void setup(void);
 
@@ -58,33 +54,19 @@ public:
      */
     virtual void refresh(void);
 
-    /**
-     * sets the state of the switch to the passed pState
-     *
-     * @param pState new state of the switch
-     */
-    virtual void setState( SwitchState_t pState );
+protected:
 
     /**
-     *
-     * @return the current state of the switch
+     * Evaluates the conditions passed during construction.
+     * @return true if the condition was evaluated to true otherwise false
      */
-    inline SwitchState_t getState( void )
+    inline bool evaluateCondition(void)
     {
-        return mState;
-    }
-
-    /**
-     *
-     * @return the inverted state of the switch
-     */
-    inline SwitchState_t getInvertedState( void )
-    {
-        return (ON == mState) ? OFF : ON;;
+        return (mSwitchCondition)();
     }
 
 private:
-    SwitchState_t mState; /**< state of the switch */
+    Condition & mSwitchCondition; ///< reference to the condition object
 };
 
 #endif /* SWITCH_H_ */

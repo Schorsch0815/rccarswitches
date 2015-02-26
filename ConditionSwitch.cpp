@@ -18,36 +18,28 @@
  *
  * --------------------------------------------------------------------*/
 
-#include "Switch.h"
+#include "ConditionSwitch.h"
 
-Switch::Switch(void) :
-        mState(OFF)
-{
-}
-
-
-Switch::~Switch(void)
+ConditionSwitch::ConditionSwitch(Condition & pSwitchCondition) :
+        Switch(), mSwitchCondition(pSwitchCondition)
 {
 }
 
 
 /**
- * This implementation do nothing for the base class, because no special initialization is needed.
+ * Calls the setup method of the parent class
  */
-void Switch::setup(void)
+void ConditionSwitch::setup()
 {
+    Switch::setup();
 }
 
 
 /**
- * This implementation do nothing for the base class, because no special handling is needed to update the switch state.
- * The only way to change the state of the switch is to call #setState.
+ * Changes the state of the switch by evaluating the condition object.
  */
-void Switch::refresh(void)
+void ConditionSwitch::refresh(void)
 {
+    setState(evaluateCondition() ? ON : OFF);
 }
 
-void Switch::setState( SwitchState_t pState )
-{
-    mState = pState;
-}
