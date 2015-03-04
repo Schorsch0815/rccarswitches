@@ -34,3 +34,4 @@
 
 # Markdown outout
 *.md.html
+/Coverage Unittest/
