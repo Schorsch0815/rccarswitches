@@ -25,6 +25,14 @@
 #include <sys/time.h>
 #include <cstdio>
 
+#if defined(__CYGWIN__)
+#include <windows.h>
+#endif
+
+#if defined(__linux__)
+#include <unistd.h>
+#endif
+
 long millis()
 {
     static struct timeval sInitialTimeVal;
@@ -44,19 +52,24 @@ long millis()
 }
 
 
-#include <windows.h>
 
-void millisleep(long usec)
+void millisleep(long pMillSec)
 {
+#if defined(__CYGWIN__)
     HANDLE timer;
     LARGE_INTEGER ft;
 
-    ft.QuadPart = -(10*usec*1000); // Convert to 100 nanosecond interval, negative value indicates relative time
+    ft.QuadPart = -(10*pMillSec*1000); // Convert to 100 nanosecond interval, negative value indicates relative time
 
     timer = CreateWaitableTimer(NULL, TRUE, NULL);
     SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0);
     WaitForSingleObject(timer, INFINITE);
     CloseHandle(timer);
+#endif
+
+#if defined(__linux__)
+    usleep(pMillSec);
+#endif
 }
 
 
