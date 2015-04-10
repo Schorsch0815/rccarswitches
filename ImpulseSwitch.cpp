@@ -24,6 +24,8 @@
 
 #include "ImpulseSwitch.h"
 
+using namespace std;
+
 ImpulseSwitch::ImpulseSwitch(Condition & pSwitchCondition, unsigned long pMinImpulsDuration,
                              unsigned long pCoolDownDelay) :
         ConditionSwitch(pSwitchCondition), mWasSwitched(false), mImpulseChangeTimestamp(ULONG_MAX), mMinImpulseDuration(
@@ -42,12 +44,12 @@ void ImpulseSwitch::setup()
 
 
 /**
- * The refresh methods checks whether the current impulse is longer active as the minimum impulse duration. If
+ * The refresh methods checks whether the current impulse is longer or equal active as the minimum impulse duration. If
  * yes the state of switch was changed and the change flag was set to prevent toggling of the switch state.
  */
 void ImpulseSwitch::refresh(void)
 {
-    if (mMinImpulseDuration < getImpulseActiveDuration())
+    if (mMinImpulseDuration <= getImpulseActiveDuration())
     {
         // to prevent toggling when impulse is still "active" but switch was changed during this impulse
         if (!mWasSwitched)

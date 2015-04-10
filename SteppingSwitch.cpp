@@ -52,13 +52,13 @@ void SteppingSwitch::setState(SwitchState_t pState)
 }
 
 /**
- * The refresh methods checks whether the current impulse is longer active as the minimum impulse duration. If
+ * The refresh methods checks whether the current impulse is longer or equal active as the minimum impulse duration. If
  * yes the current step was increased and if the maximum number of steps was reached the next step will be
  * the first one again. Every impulse will increase the step by one.
  */
 void SteppingSwitch::refresh(void)
 {
-    if (getMinImpulseDuration() < getImpulseActiveDuration())
+    if (getMinImpulseDuration() <= getImpulseActiveDuration())
     {
         // to prevent toggling when impulse is still "active" but switch was changed during this impulse
         if (!mWasSwitched)
