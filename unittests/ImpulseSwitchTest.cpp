@@ -56,7 +56,7 @@ TEST(ImpulseSwitchTest, ImpulseToShort)
     lCondition.mValue = true;
     s1.refresh();
     EXPECT_EQ(Switch::OFF,s1.getState());
-    millisleep(900);
+    delay(900);
     s1.refresh();
 
     EXPECT_EQ(Switch::OFF,s1.getState());
@@ -77,7 +77,7 @@ TEST(ImpulseSwitchTest, ImpulseLongEnough)
     EXPECT_EQ(Switch::OFF,s1.getState());
     lCondition.mValue = true;
     s1.refresh();
-    millisleep(1001);
+    delay(1001);
     s1.refresh();
     EXPECT_EQ(Switch::ON,s1.getState());
 

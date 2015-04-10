@@ -60,7 +60,7 @@ TEST(SteppingSwitchTest, ImpulseToShort)
     s1.refresh();
     EXPECT_EQ(Switch::OFF,s1.getState());
     EXPECT_EQ(0U,s1.getCurrentStep());
-    millisleep(900);
+    delay(900);
     s1.refresh();
 
     EXPECT_EQ(Switch::OFF,s1.getState());
@@ -84,7 +84,7 @@ TEST(SteppingSwitchTest, ImpulseLongEnough)
     EXPECT_EQ(0U,s1.getCurrentStep());
     lCondition.mValue = true;
     s1.refresh();
-    millisleep(1001);
+    delay(1001);
     s1.refresh();
     EXPECT_EQ(Switch::ON,s1.getState());
     EXPECT_EQ(1U,s1.getCurrentStep());
@@ -112,7 +112,7 @@ TEST(SteppingSwitchTest, SteppingPassOverTest)
     {
         lCondition.mValue = true;
         s1.refresh();
-        millisleep(1001);
+        delay(1001);
         s1.refresh();
         if (3 > i)
         {
@@ -138,7 +138,7 @@ TEST(SteppingSwitchTest, SteppingPassOverTest)
             EXPECT_EQ(Switch::OFF,s1.getState());
             EXPECT_EQ(0U,s1.getCurrentStep());
         }
-        millisleep(50);
+        delay(50);
     }
 }
 
