@@ -101,8 +101,18 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<folderInfo id="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687.659073834" name="/" resourcePath="arduinomock/unittests">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.base.1615233110" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base" unusedChildren="">
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.257007870" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base.1837346764"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.417791322" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base.852168651"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1774514913" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base.1139296902"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.614193006" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base.1517096900"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.1832128316" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base.1733999644"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.base.1902861517" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base.910202503"/>
+						</toolChain>
+					</folderInfo>
 					<sourceEntries>
-						<entry excluding="arduino|Libraries/*/?xamples|Libraries/*/?xtras" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="arduinomock/unittests|arduino|Libraries/*/?xamples|Libraries/*/?xtras" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
