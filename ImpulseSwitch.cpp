@@ -26,13 +26,17 @@
 
 using namespace std;
 
-ImpulseSwitch::ImpulseSwitch(Condition & pSwitchCondition, unsigned long pMinImpulsDuration,
-                             unsigned long pCoolDownDelay) :
-        ConditionSwitch(pSwitchCondition), mWasSwitched(false), mImpulseChangeTimestamp(ULONG_MAX), mMinImpulseDuration(
-                pMinImpulsDuration), mCoolDownDelay(pCoolDownDelay), mImpulseActive(false)
+ImpulseSwitch::ImpulseSwitch( Condition & pSwitchCondition,
+                              unsigned long pMinImpulsDuration,
+                              unsigned long pCoolDownDelay ) :
+        ConditionSwitch( pSwitchCondition ),
+        mWasSwitched( false ),
+        mImpulseChangeTimestamp( ULONG_MAX ),
+        mMinImpulseDuration( pMinImpulsDuration ),
+        mCoolDownDelay( pCoolDownDelay ),
+        mImpulseActive( false )
 {
 }
-
 
 /**
  * Calls the setup method of the parent class
@@ -42,12 +46,11 @@ void ImpulseSwitch::setup()
     ConditionSwitch::setup();
 }
 
-
 /**
  * The refresh methods checks whether the current impulse is longer or equal active as the minimum impulse duration. If
  * yes the state of switch was changed and the change flag was set to prevent toggling of the switch state.
  */
-void ImpulseSwitch::refresh(void)
+void ImpulseSwitch::refresh( void )
 {
     if (mMinImpulseDuration <= getImpulseActiveDuration())
     {
@@ -55,7 +58,7 @@ void ImpulseSwitch::refresh(void)
         if (!mWasSwitched)
         {
             // toggle switch state
-            setState(getInvertedState());
+            setState( getInvertedState() );
             mWasSwitched = true;
         }
     }
@@ -89,7 +92,7 @@ unsigned long ImpulseSwitch::getImpulseActiveDuration()
         // in case impulse is active we return at least 1 milliseconds for duration
         long lMillis = millis();
         long lDiff = lMillis - mImpulseChangeTimestamp;
-        return max(1L, lDiff);
+        return max( 1L, lDiff );
     }
     else
     {

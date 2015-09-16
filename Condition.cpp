@@ -20,10 +20,63 @@
 
 #include "Condition.h"
 
-Condition::Condition()
+#include <cstdio>
+#include "Arduino.h"
+
+Condition::Condition( unsigned long fDelay ) :
+        mDelay( fDelay ),
+        mChangeDetected( millis() ),
+        mCurrentState( false ),
+        mUpcommingState( false )
 {
 }
 
 Condition::~Condition()
 {
+}
+
+bool Condition::operator()()
+{
+    bool lState = evaluate();
+    unsigned long lCurrentMillis = millis();
+
+    if (0 < mDelay)
+    {
+        if (mCurrentState != mUpcommingState)
+        {
+            // last time we detect a change of condition
+            if (lState == mCurrentState)
+            {
+                // condition falls back to current state before delay was passed
+                mUpcommingState = lState;
+                mChangeDetected = lCurrentMillis;
+            }
+            else
+            {
+                // change will be detected if last change least longer than configured delay
+                if (mChangeDetected + mDelay <= lCurrentMillis)
+                {
+                    mCurrentState = lState;
+                    mChangeDetected = lCurrentMillis;
+                }
+            }
+        }
+        else
+        {
+            if (lState != mCurrentState)
+            {
+                // a state change was recognized and we have to remember the new upcoming state
+                mUpcommingState = lState;
+                mChangeDetected = lCurrentMillis;
+            }
+
+        }
+    }
+    else
+    {
+        mUpcommingState = lState;
+        mCurrentState = lState;
+        mChangeDetected = lCurrentMillis;
+    }
+    return mCurrentState;
 }

@@ -42,17 +42,17 @@ public:
      *
      * @param pSwitchCondition condition object
      */
-    ConditionSwitch(Condition & pSwitchCondition);
+    ConditionSwitch( Condition & pSwitchCondition );
 
     /**
      *  Sets up the switch. Has to be called before the switch can be used.
      */
-    virtual void setup(void);
+    virtual void setup( void );
 
     /**
      * Refreshes the switch state. Has to be called within the loop of an application.
      */
-    virtual void refresh(void);
+    virtual void refresh( void );
 
 protected:
 
@@ -60,7 +60,7 @@ protected:
      * Evaluates the conditions passed during construction.
      * @return true if the condition was evaluated to true otherwise false
      */
-    inline bool evaluateCondition(void)
+    inline bool evaluateCondition( void )
     {
         return (mSwitchCondition)();
     }

@@ -45,17 +45,19 @@ public:
      * @param pMinImpulsDuration minimum impulse duration in milliseconds.
      * @param pCoolDownDelay the impulse cool down delay in milliseconds, the default value is 0.
      */
-    ImpulseSwitch(Condition & pSwitchCondition, unsigned long pMinImpulseDuration, unsigned long pCoolDownDelay = 0L);
+    ImpulseSwitch( Condition & pSwitchCondition,
+                   unsigned long pMinImpulseDuration,
+                   unsigned long pCoolDownDelay = 0L );
 
     /**
      *  Sets up the switch. Has to be called before the switch can be used.
      */
-    virtual void setup(void);
+    virtual void setup( void );
 
     /**
      * Refreshes the switch state. Has to be called within the loop of an application.
      */
-    virtual void refresh(void);
+    virtual void refresh( void );
 
 protected:
 
@@ -78,9 +80,9 @@ protected:
 
 private:
     unsigned long mImpulseChangeTimestamp; ///< timestamp when a change of conditions state was detected.
-    unsigned long mMinImpulseDuration;     ///< minimum duration [milliseconds] of in impulse to change the switch state.
-    unsigned long mCoolDownDelay;          ///< Switch did detect an new impulse for cool down delay [milliseconds] after a state switch.
-    bool mImpulseActive;                   ///< Flag indicating whether an impulse is active or not
+    unsigned long mMinImpulseDuration; ///< minimum duration [milliseconds] of in impulse to change the switch state.
+    unsigned long mCoolDownDelay; ///< Switch did detect an new impulse for cool down delay [milliseconds] after a state switch.
+    bool mImpulseActive; ///< Flag indicating whether an impulse is active or not
 };
 
 #endif /* IMPULSPINSWITCH_H_ */

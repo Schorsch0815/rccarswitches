@@ -34,8 +34,7 @@ public:
      */
     typedef enum
     {
-        OFF,
-        ON
+        OFF, ON
     } SwitchState_t;
 
     /**
@@ -51,12 +50,12 @@ public:
     /**
      * Sets up the switch. Has to be called before the switch can be used.
      */
-    virtual void setup(void);
+    virtual void setup();
 
     /**
      * Refreshes the switch state. Has to be called within the loop of an application.
      */
-    virtual void refresh(void);
+    virtual void refresh();
 
     /**
      * sets the state of the switch to the passed pState

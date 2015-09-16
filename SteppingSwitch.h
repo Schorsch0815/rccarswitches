@@ -45,8 +45,10 @@ public:
      * @param pMinImpulsDuration minimum impulse duration in milliseconds.
      * @param pCoolDownDelay the impulse cool down delay in milliseconds, the default value is 0.
      */
-    SteppingSwitch(Condition & pSwitchCondition, unsigned int pNumberOfSteps, unsigned long pImpulseDuration,
-                   unsigned long pImpluseCooldown = 0L);
+    SteppingSwitch( Condition & pSwitchCondition,
+                    unsigned int pNumberOfSteps,
+                    unsigned long pImpulseDuration,
+                    unsigned long pImpluseCooldown = 0L );
 
     /**
      * Destrcutor
@@ -56,12 +58,12 @@ public:
     /**
      *  Sets up the switch. Has to be called before the switch can be used.
      */
-    virtual void setup(void);
+    virtual void setup( void );
 
     /**
      * Refreshes the current position of the switch. Has to be called within the loop of an application.
      */
-    virtual void refresh(void);
+    virtual void refresh( void );
 
     /**
      * Returns the current step of the switch.
@@ -76,11 +78,11 @@ public:
      * Allows to reset the stepping switch to position 0 and setting state to OFF.
      * @param pState
      */
-    virtual void setState(SwitchState_t pState);
+    virtual void setState( SwitchState_t pState );
 
 private:
     unsigned int mNumberOfSteps; ///< Maximum number of steps
-    unsigned int mCurrentStep;   ///< Current step number [0 &lt;= current step number &lt; max steps]
+    unsigned int mCurrentStep; ///< Current step number [0 &lt;= current step number &lt; max steps]
 };
 
 #endif /* STEPPINGSWITCH_H_ */
