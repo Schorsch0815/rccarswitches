@@ -27,16 +27,17 @@
 class SimpleSteppingSwitchCondition : public Condition
 {
 public:
-    SimpleSteppingSwitchCondition() : Condition(),mValue(false)
+    SimpleSteppingSwitchCondition() :
+            Condition(), mValue( false )
     {
     }
 
-    virtual bool operator()();
+    virtual bool evaluate();
 
     bool mValue;
 };
 
-bool SimpleSteppingSwitchCondition::operator()()
+bool SimpleSteppingSwitchCondition::evaluate()
 {
     return mValue;
 }
@@ -66,7 +67,6 @@ TEST(SteppingSwitchTest, ImpulseToShort)
     EXPECT_EQ(Switch::OFF,s1.getState());
     EXPECT_EQ(0U,s1.getCurrentStep());
 }
-
 
 // Tests stepping switch long impulse
 TEST(SteppingSwitchTest, ImpulseLongEnough)

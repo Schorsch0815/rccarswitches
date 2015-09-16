@@ -23,7 +23,8 @@
 #include "../Switch.h"
 
 // Tests Switch setState and getState.
-TEST(SwitchTest, SetGet) {
+TEST(SwitchTest, SetGet)
+{
 
     Switch s1;
 
@@ -36,9 +37,9 @@ TEST(SwitchTest, SetGet) {
     EXPECT_EQ(Switch::OFF,s1.getState());
 }
 
-
 // Tests Switch setup do nothing.
-TEST(SwitchTest, Setup) {
+TEST(SwitchTest, Setup)
+{
 
     Switch s1;
 
@@ -49,7 +50,8 @@ TEST(SwitchTest, Setup) {
 }
 
 // Tests Switch setup do nothing.
-TEST(SwitchTest, Refresh) {
+TEST(SwitchTest, Refresh)
+{
 
     Switch s1;
 
@@ -58,5 +60,4 @@ TEST(SwitchTest, Refresh) {
     s1.refresh();
     EXPECT_EQ(Switch::OFF,s1.getState());
 }
-
 

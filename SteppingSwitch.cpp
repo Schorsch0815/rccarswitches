@@ -20,10 +20,13 @@
 
 #include "SteppingSwitch.h"
 
-SteppingSwitch::SteppingSwitch(Condition & pSwitchCondition, unsigned int pNumberOfSteps,
-                               unsigned long pImpulseDuration, unsigned long pImpluseCooldown) :
-        ImpulseSwitch(pSwitchCondition, pImpulseDuration, pImpluseCooldown), mNumberOfSteps(pNumberOfSteps), mCurrentStep(
-                0)
+SteppingSwitch::SteppingSwitch( Condition & pSwitchCondition,
+                                unsigned int pNumberOfSteps,
+                                unsigned long pImpulseDuration,
+                                unsigned long pImpluseCooldown ) :
+        ImpulseSwitch( pSwitchCondition, pImpulseDuration, pImpluseCooldown ),
+        mNumberOfSteps( pNumberOfSteps ),
+        mCurrentStep( 0 )
 {
 }
 
@@ -42,11 +45,11 @@ void SteppingSwitch::setup()
 /**
  * Passing the state ON will not influence the step position of the switch.
  */
-void SteppingSwitch::setState(SwitchState_t pState)
+void SteppingSwitch::setState( SwitchState_t pState )
 {
     if (OFF == pState)
     {
-        ImpulseSwitch::setState(pState);
+        ImpulseSwitch::setState( pState );
         mCurrentStep = 0;
     }
 }
@@ -56,7 +59,7 @@ void SteppingSwitch::setState(SwitchState_t pState)
  * yes the current step was increased and if the maximum number of steps was reached the next step will be
  * the first one again. Every impulse will increase the step by one.
  */
-void SteppingSwitch::refresh(void)
+void SteppingSwitch::refresh( void )
 {
     if (getMinImpulseDuration() <= getImpulseActiveDuration())
     {
@@ -69,12 +72,12 @@ void SteppingSwitch::refresh(void)
 
             if (mCurrentStep >= mNumberOfSteps)
             {
-                ImpulseSwitch::setState(OFF);
+                ImpulseSwitch::setState( OFF );
                 mCurrentStep = 0;
             }
             else
             {
-                ImpulseSwitch::setState(ON);
+                ImpulseSwitch::setState( ON );
             }
         }
     }

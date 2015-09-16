@@ -27,16 +27,17 @@
 class SimpleImpulseSwitchCondition : public Condition
 {
 public:
-    SimpleImpulseSwitchCondition() : Condition(), mValue(false)
+    SimpleImpulseSwitchCondition() :
+            Condition(), mValue( false )
     {
     }
 
-    virtual bool operator()();
+    virtual bool evaluate();
 
     bool mValue;
 };
 
-bool SimpleImpulseSwitchCondition::operator()()
+bool SimpleImpulseSwitchCondition::evaluate()
 {
     return mValue;
 }
@@ -61,7 +62,6 @@ TEST(ImpulseSwitchTest, ImpulseToShort)
 
     EXPECT_EQ(Switch::OFF,s1.getState());
 }
-
 
 // Tests impulse switch long impulse
 TEST(ImpulseSwitchTest, ImpulseLongEnough)

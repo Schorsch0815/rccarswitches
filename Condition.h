@@ -24,19 +24,27 @@
 /**
  * Base class for conditions and has to be subclassed for concrete implementations. A condition is needed when
  * using a ConditionSwitch, ImpulseSwitch or SteppingSwitch. The switch will use the Condition::operator() to
- * "evaluate" the condition. That means the condition will influence the behaviour of the Switch. (See
+ * "evaluate" the condition. That means the condition will influence the behavior of the Switch. (See
  * ConditionSwitch for more information).
  *
- * When writing an own condition, at least the virtual operator() has to be overloaded. It should return reflect the
+ * The condition allows to specify a delay, which defines the delay after the condition propagates the
+ * internal detected change to the outside.
+ *
+ * When writing an own condition, at least the virtual method evaluate() has to be overloaded. It should return reflect the
  * value of the condition and can be implemented as required.
  */
 class Condition
 {
 public:
     /**
-     * Construtor
+     * Constructor
+     *
+     * The optional parameter fDelay allows to specify an arbitrary value for a
+     * delay.
+     *
+     * @param fDelay defines a delay after the condition raises a change in milliseconds
      */
-    Condition();
+    Condition( unsigned long fDelay = 0 );
 
     /**
      * Destructor
@@ -44,10 +52,23 @@ public:
     virtual ~Condition();
 
     /**
-     * This operator is used to evaluate the value of the condition.
+     * Evaluates the value of the condition and regards an existing delay.
+     *
      * @return the value of the condition, can be either true or false.
      */
-    virtual bool operator()() = 0;
+    bool operator()();
+
+private:
+    /**
+     * Evaluates the condition and has to be overloaded by a subclass.
+     * @return the value of the condition, can be either true or false
+     */
+    virtual bool evaluate() = 0;
+
+    unsigned long mDelay;           ///< delay in milliseconds
+    unsigned long mChangeDetected; ///< holds the time stamp the condition change was detected
+    bool mCurrentState;    ///< current propagate value of the switch
+    bool mUpcommingState;  ///< upcoming state of the last call to evaluate
 };
 
 #endif /* CONDITION_H_ */
