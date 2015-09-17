@@ -22,9 +22,9 @@
 
 SteppingSwitch::SteppingSwitch( Condition & pSwitchCondition,
                                 unsigned int pNumberOfSteps,
-                                unsigned long pImpulseDuration,
-                                unsigned long pImpluseCooldown ) :
-        ImpulseSwitch( pSwitchCondition, pImpulseDuration, pImpluseCooldown ),
+                                unsigned long pMinImpulseDuration,
+                                unsigned long pCoolDownDelay ) :
+        ImpulseSwitch( pSwitchCondition, pMinImpulseDuration, pCoolDownDelay ),
         mNumberOfSteps( pNumberOfSteps ),
         mCurrentStep( 0 )
 {

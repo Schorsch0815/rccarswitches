@@ -42,7 +42,7 @@ public:
      * Constructor. Creates an impulse switch and allows to specify a condition, a minimum impulse duration
      * and the cool down delay.
      * @param pSwitchCondition condition object.
-     * @param pMinImpulsDuration minimum impulse duration in milliseconds.
+     * @param pMinImpulseDuration minimum impulse duration in milliseconds.
      * @param pCoolDownDelay the impulse cool down delay in milliseconds, the default value is 0.
      */
     ImpulseSwitch( Condition & pSwitchCondition,

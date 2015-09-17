@@ -31,6 +31,7 @@
  * a condition. When creating a switch a Condition object can be passed, which will be
  * evaluated for each refresh. When evaluated condition returns true the state of the
  * switch changes to ON and OFF otherwise.
+ *
  */
 class ConditionSwitch : public Switch
 {
