@@ -42,9 +42,10 @@ public:
      * The optional parameter fDelay allows to specify an arbitrary value for a
      * delay.
      *
-     * @param fDelay defines a delay after the condition raises a change in milliseconds
+     * @param fOnDelay defines a delay after the condition raises a change from false to true in milliseconds
+     * @param fOffDelay defines a delay after the condition raises a change from ttrue to false in milliseconds
      */
-    Condition( unsigned long fDelay = 0 );
+    Condition( unsigned long fOnDelay = 0, unsigned long fOffDelay = 0 );
 
     /**
      * Destructor
@@ -65,7 +66,8 @@ private:
      */
     virtual bool evaluate() = 0;
 
-    unsigned long mDelay;           ///< delay in milliseconds
+    unsigned long mOnDelay;           ///< delay in milliseconds
+    unsigned long mOffDelay;           ///< delay in milliseconds
     unsigned long mChangeDetected; ///< holds the time stamp the condition change was detected
     bool mCurrentState;    ///< current propagate value of the switch
     bool mUpcommingState;  ///< upcoming state of the last call to evaluate

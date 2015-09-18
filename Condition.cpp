@@ -23,8 +23,9 @@
 #include <cstdio>
 #include "Arduino.h"
 
-Condition::Condition( unsigned long fDelay ) :
-        mDelay( fDelay ),
+Condition::Condition( unsigned long fOnDelay, unsigned long fOffDelay ) :
+        mOnDelay( fOnDelay ),
+        mOffDelay( fOffDelay ),
         mChangeDetected( millis() ),
         mCurrentState( false ),
         mUpcommingState( false )
@@ -39,8 +40,9 @@ bool Condition::operator()()
 {
     bool lState = evaluate();
     unsigned long lCurrentMillis = millis();
+    unsigned long lDelay = (mCurrentState ? mOffDelay : mOnDelay);
 
-    if (0 < mDelay)
+    if (0 < lDelay)
     {
         if (mCurrentState != mUpcommingState)
         {
@@ -54,7 +56,7 @@ bool Condition::operator()()
             else
             {
                 // change will be detected if last change least longer than configured delay
-                if (mChangeDetected + mDelay <= lCurrentMillis)
+                if (mChangeDetected + lDelay <= lCurrentMillis)
                 {
                     mCurrentState = lState;
                     mChangeDetected = lCurrentMillis;
