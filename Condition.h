@@ -27,8 +27,9 @@
  * "evaluate" the condition. That means the condition will influence the behavior of the Switch. (See
  * ConditionSwitch for more information).
  *
- * The condition allows to specify a delay, which defines the delay after the condition propagates the
- * internal detected change to the outside.
+ * The condition allows to specify two delays, which defines the delay after the condition propagates the
+ * internal detected change to the outside. There exists one delay when the condition raises from true to
+ * false and a second one, which controls the delay from state false to true.
  *
  * When writing an own condition, at least the virtual method evaluate() has to be overloaded. It should return reflect the
  * value of the condition and can be implemented as required.
