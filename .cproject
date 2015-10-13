@@ -98,6 +98,9 @@
 								</inputType>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.base.910202503" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base">
+								<option id="gnu.both.asm.option.include.paths.1269524201" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/core}&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1695505238" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 						</toolChain>
@@ -109,21 +112,6 @@
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
-	</storageModule>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.150775106;cdt.managedbuild.config.gnu.exe.debug.150775106.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1478902269;cdt.managedbuild.tool.gnu.cpp.compiler.input.1809997318">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.150775106;cdt.managedbuild.config.gnu.exe.debug.150775106.;cdt.managedbuild.tool.gnu.c.compiler.exe.debug.681760315;cdt.managedbuild.tool.gnu.c.compiler.input.1733889534">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.273775448;cdt.managedbuild.config.gnu.exe.release.273775448.;cdt.managedbuild.tool.gnu.c.compiler.exe.release.13637753;cdt.managedbuild.tool.gnu.c.compiler.input.1580686607">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.273775448;cdt.managedbuild.config.gnu.exe.release.273775448.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.1536714410;cdt.managedbuild.tool.gnu.cpp.compiler.input.1894140682">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="rccarswitches.null.436238673" name="rccarswitches"/>
@@ -138,4 +126,25 @@
 		</configuration>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.150775106;cdt.managedbuild.config.gnu.exe.debug.150775106.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1478902269;cdt.managedbuild.tool.gnu.cpp.compiler.input.1809997318">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.150775106;cdt.managedbuild.config.gnu.exe.debug.150775106.;cdt.managedbuild.tool.gnu.c.compiler.exe.debug.681760315;cdt.managedbuild.tool.gnu.c.compiler.input.1733889534">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.273775448;cdt.managedbuild.config.gnu.exe.release.273775448.;cdt.managedbuild.tool.gnu.c.compiler.exe.release.13637753;cdt.managedbuild.tool.gnu.c.compiler.input.1580686607">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687;it.baeyens.arduino.core.toolChain.release.1128593604.1341117687.;cdt.managedbuild.tool.gnu.cpp.compiler.base.852168651;cdt.managedbuild.tool.gnu.cpp.compiler.input.365514270">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687;it.baeyens.arduino.core.toolChain.release.1128593604.1341117687.;cdt.managedbuild.tool.gnu.c.compiler.base.1139296902;cdt.managedbuild.tool.gnu.c.compiler.input.2099386287">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.273775448;cdt.managedbuild.config.gnu.exe.release.273775448.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.1536714410;cdt.managedbuild.tool.gnu.cpp.compiler.input.1894140682">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
 </cproject>
