@@ -24,27 +24,24 @@
 
 #include "ImpulseSwitch.h"
 
-using namespace std;
-
-ImpulseSwitch::ImpulseSwitch( Condition & pSwitchCondition,
+ImpulseSwitch::ImpulseSwitch( Condition &pSwitchCondition,
                               unsigned long pMinImpulsDuration,
-                              unsigned long pCoolDownDelay ) :
-        ConditionSwitch( pSwitchCondition ),
-        mWasSwitched( false ),
-        mImpulseChangeTimestamp( ULONG_MAX ),
-        mMinImpulseDuration( pMinImpulsDuration ),
-        mCoolDownDelay( pCoolDownDelay ),
-        mImpulseActive( false )
+                              unsigned long pCoolDownDelay )
+    : ConditionSwitch( pSwitchCondition )
+    , mWasSwitched( false )
+    , mImpulseChangeTimestamp( ULONG_MAX )
+    , mMinImpulseDuration( pMinImpulsDuration )
+    , mCoolDownDelay( pCoolDownDelay )
+    , mImpulseActive( false )
 {
 }
+
+ImpulseSwitch::~ImpulseSwitch() {}
 
 /**
  * Calls the setup method of the parent class
  */
-void ImpulseSwitch::setup()
-{
-    ConditionSwitch::setup();
-}
+void ImpulseSwitch::setup() { ConditionSwitch::setup(); }
 
 /**
  * The refresh methods checks whether the current impulse is longer or equal active as the minimum impulse duration. If
@@ -52,10 +49,10 @@ void ImpulseSwitch::setup()
  */
 void ImpulseSwitch::refresh( void )
 {
-    if (mMinImpulseDuration <= getImpulseActiveDuration())
+    if ( mMinImpulseDuration <= getImpulseActiveDuration() )
     {
         // to prevent toggling when impulse is still "active" but switch was changed during this impulse
-        if (!mWasSwitched)
+        if ( !mWasSwitched )
         {
             // toggle switch state
             setState( getInvertedState() );
@@ -74,13 +71,14 @@ void ImpulseSwitch::refresh( void )
  */
 unsigned long ImpulseSwitch::getImpulseActiveDuration()
 {
-    if (evaluateCondition())
+    if ( evaluateCondition() )
     {
 
-        if (!mImpulseActive)
+        if ( !mImpulseActive )
         {
-            // switch cannot be retriggered before defiended cool down. mImpulseChangeTimestamp has value of last release action
-            if (mImpulseChangeTimestamp < mCoolDownDelay)
+            // switch cannot be retriggered before defiended cool down. mImpulseChangeTimestamp has value of last
+            // release action
+            if ( mImpulseChangeTimestamp < mCoolDownDelay )
             {
                 return 0;
             }
@@ -96,7 +94,7 @@ unsigned long ImpulseSwitch::getImpulseActiveDuration()
     }
     else
     {
-        if (mImpulseActive)
+        if ( mImpulseActive )
         {
             mImpulseActive = false;
             mImpulseChangeTimestamp = millis();

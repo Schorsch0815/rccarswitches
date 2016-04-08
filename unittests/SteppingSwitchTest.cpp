@@ -26,9 +26,10 @@
 
 class SimpleSteppingSwitchCondition : public Condition
 {
-public:
-    SimpleSteppingSwitchCondition() :
-            Condition(), mValue( false )
+  public:
+    SimpleSteppingSwitchCondition()
+        : Condition()
+        , mValue( false )
     {
     }
 
@@ -37,108 +38,181 @@ public:
     bool mValue;
 };
 
-bool SimpleSteppingSwitchCondition::evaluate()
+bool SimpleSteppingSwitchCondition::evaluate() { return mValue; }
+
+class SteppingSwitchTest : public ::testing::Test
 {
-    return mValue;
-}
+  protected:
+    virtual void SetUp() { ArduinoMockController::getInstance().reset(); }
+
+    virtual void TearDown() {}
+};
 
 // Tests stepping switch but with too short impulse
-TEST(SteppingSwitchTest, ImpulseToShort)
+TEST_F( SteppingSwitchTest, ImpulseToShort )
 {
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
     SimpleSteppingSwitchCondition lCondition;
 
-    SteppingSwitch s1(lCondition,4,1000,0);
+    SteppingSwitch s1( lCondition, 4, 1000, 0 );
 
-    EXPECT_EQ(Switch::OFF,s1.getState());
-    EXPECT_EQ(0U,s1.getCurrentStep());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
 
     s1.setup();
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
-    EXPECT_EQ(0U,s1.getCurrentStep());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
 
     lCondition.mValue = true;
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
-    EXPECT_EQ(0U,s1.getCurrentStep());
-    delay(900);
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
+    delay( 900 );
     s1.refresh();
 
-    EXPECT_EQ(Switch::OFF,s1.getState());
-    EXPECT_EQ(0U,s1.getCurrentStep());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
 }
 
 // Tests stepping switch long impulse
-TEST(SteppingSwitchTest, ImpulseLongEnough)
+TEST_F( SteppingSwitchTest, ImpulseLongEnough )
 {
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
     SimpleSteppingSwitchCondition lCondition;
 
-    SteppingSwitch s1(lCondition,4,1001,0);
+    SteppingSwitch s1( lCondition, 4, 1001, 0 );
 
-    EXPECT_EQ(Switch::OFF,s1.getState());
-    EXPECT_EQ(0U,s1.getCurrentStep());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
 
     s1.setup();
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
-    EXPECT_EQ(0U,s1.getCurrentStep());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
     lCondition.mValue = true;
     s1.refresh();
-    delay(1001);
+    delay( 1001 );
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
-    EXPECT_EQ(1U,s1.getCurrentStep());
+    EXPECT_EQ( Switch::ON, s1.getState() );
+    EXPECT_EQ( 1U, s1.getCurrentStep() );
 
     lCondition.mValue = false;
     s1.refresh();
 
-    EXPECT_EQ(Switch::ON,s1.getState());
-    EXPECT_EQ(1U,s1.getCurrentStep());
+    EXPECT_EQ( Switch::ON, s1.getState() );
+    EXPECT_EQ( 1U, s1.getCurrentStep() );
 }
 
 // Tests stepping switch that after #ofMaxSteps impulses the step is identical with the first step
-TEST(SteppingSwitchTest, SteppingPassOverTest)
+TEST_F( SteppingSwitchTest, SteppingPassOverTest )
 {
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
     SimpleSteppingSwitchCondition lCondition;
 
-    SteppingSwitch s1(lCondition,4,1000,0);
+    SteppingSwitch s1( lCondition, 4, 1000, 0 );
 
-    EXPECT_EQ(Switch::OFF,s1.getState());
-    EXPECT_EQ(0U,s1.getCurrentStep());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
 
     s1.setup();
 
-    for (unsigned int i = 0; i < 4; ++i)
+    for ( unsigned int i = 0; i < 4; ++i )
     {
         lCondition.mValue = true;
         s1.refresh();
-        delay(1001);
+        delay( 1001 );
         s1.refresh();
-        if (3 > i)
+        if ( 3 > i )
         {
-            EXPECT_EQ(Switch::ON,s1.getState());
-            EXPECT_EQ(i + 1,s1.getCurrentStep());
+            EXPECT_EQ( Switch::ON, s1.getState() );
+            EXPECT_EQ( i + 1, s1.getCurrentStep() );
         }
         else
         {
-            EXPECT_EQ(Switch::OFF,s1.getState());
-            EXPECT_EQ(0U,s1.getCurrentStep());
+            EXPECT_EQ( Switch::OFF, s1.getState() );
+            EXPECT_EQ( 0U, s1.getCurrentStep() );
         }
         lCondition.mValue = false;
 
         s1.refresh();
 
-        if (3 > i)
+        if ( 3 > i )
         {
-            EXPECT_EQ(Switch::ON,s1.getState());
-            EXPECT_EQ(i + 1,s1.getCurrentStep());
+            EXPECT_EQ( Switch::ON, s1.getState() );
+            EXPECT_EQ( i + 1, s1.getCurrentStep() );
         }
         else
         {
-            EXPECT_EQ(Switch::OFF,s1.getState());
-            EXPECT_EQ(0U,s1.getCurrentStep());
+            EXPECT_EQ( Switch::OFF, s1.getState() );
+            EXPECT_EQ( 0U, s1.getCurrentStep() );
         }
-        delay(50);
+        delay( 50 );
     }
 }
 
+TEST_F( SteppingSwitchTest, SetStateTest )
+{
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
+    SimpleSteppingSwitchCondition lCondition;
+
+    SteppingSwitch s1( lCondition, 4, 1001, 0 );
+    s1.setup();
+
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
+
+    s1.refresh();
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
+
+    lCondition.mValue = true;
+    s1.refresh();
+    delay( 1001 );
+    s1.refresh();
+    EXPECT_EQ( Switch::ON, s1.getState() );
+    EXPECT_EQ( 1U, s1.getCurrentStep() );
+
+    lCondition.mValue = false;
+    s1.refresh();
+
+    EXPECT_EQ( Switch::ON, s1.getState() );
+    EXPECT_EQ( 1U, s1.getCurrentStep() );
+
+    lCondition.mValue = true;
+    s1.refresh();
+    delay( 1001 );
+    s1.refresh();
+    EXPECT_EQ( Switch::ON, s1.getState() );
+    EXPECT_EQ( 2U, s1.getCurrentStep() );
+
+    lCondition.mValue = false;
+    s1.refresh();
+
+    EXPECT_EQ( Switch::ON, s1.getState() );
+    EXPECT_EQ( 2U, s1.getCurrentStep() );
+
+    // reset current step to 0
+    s1.setState( Switch::OFF );
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
+
+    // should have no effect here
+    s1.setState( Switch::ON );
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+    EXPECT_EQ( 0U, s1.getCurrentStep() );
+
+    // let's start with first step
+    lCondition.mValue = true;
+    s1.refresh();
+    delay( 1001 );
+    s1.refresh();
+    EXPECT_EQ( Switch::ON, s1.getState() );
+    EXPECT_EQ( 1U, s1.getCurrentStep() );
+
+    lCondition.mValue = false;
+    s1.refresh();
+
+    EXPECT_EQ( Switch::ON, s1.getState() );
+    EXPECT_EQ( 1U, s1.getCurrentStep() );
+}

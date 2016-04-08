@@ -20,15 +20,20 @@
 
 #include "gtest/gtest.h"
 
+#include <cstdio>
+#include <iostream>
+
 #include "../ImpulseSwitch.h"
 #include "Arduino.h"
-#include <cstdio>
+
+using namespace std;
 
 class SimpleImpulseSwitchCondition : public Condition
 {
-public:
-    SimpleImpulseSwitchCondition() :
-            Condition(), mValue( false )
+  public:
+    SimpleImpulseSwitchCondition()
+        : Condition()
+        , mValue( false )
     {
     }
 
@@ -37,53 +42,65 @@ public:
     bool mValue;
 };
 
-bool SimpleImpulseSwitchCondition::evaluate()
+bool SimpleImpulseSwitchCondition::evaluate() { return mValue; }
+
+class ImpulseSwitchTest : public ::testing::Test
 {
-    return mValue;
-}
+  protected:
+    virtual void SetUp() { ArduinoMockController::getInstance().reset(); }
+
+    virtual void TearDown() {}
+};
 
 // Tests impulse switch but with too short impulse
-TEST(ImpulseSwitchTest, ImpulseToShort)
+TEST_F( ImpulseSwitchTest, ImpulseToShort )
 {
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
     SimpleImpulseSwitchCondition lCondition;
 
-    ImpulseSwitch s1(lCondition,1000,0);
+    ImpulseSwitch s1( lCondition, 1000, 0 );
 
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
     s1.setup();
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+
     lCondition.mValue = true;
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
-    delay(900);
-    s1.refresh();
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    delay( 999 ); // TODO test should fail because 1 +999 >= 1000 => switch must be active! => ???
+    cout << "millis =" << millis() << endl;
+    s1.refresh();
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 }
 
 // Tests impulse switch long impulse
-TEST(ImpulseSwitchTest, ImpulseLongEnough)
+TEST_F( ImpulseSwitchTest, ImpulseLongEnough )
 {
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
     SimpleImpulseSwitchCondition lCondition;
 
-    ImpulseSwitch s1(lCondition,1000,0);
+    ImpulseSwitch s1( lCondition, 1000, 0 );
 
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
+    ArduinoMockController::getInstance().setMilliSeconds( 0 );
     s1.setup();
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+
     lCondition.mValue = true;
     s1.refresh();
-    delay(1001);
+
+    ArduinoMockController::getInstance().setMilliSeconds( 1000 );
+
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
     lCondition.mValue = false;
     s1.refresh();
 
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 }
-
