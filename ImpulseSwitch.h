@@ -37,7 +37,7 @@
  */
 class ImpulseSwitch : public ConditionSwitch
 {
-public:
+  public:
     /**
      * Constructor. Creates an impulse switch and allows to specify a condition, a minimum impulse duration
      * and the cool down delay.
@@ -45,9 +45,9 @@ public:
      * @param pMinImpulseDuration minimum impulse duration in milliseconds.
      * @param pCoolDownDelay the impulse cool down delay in milliseconds, the default value is 0.
      */
-    ImpulseSwitch( Condition & pSwitchCondition,
-                   unsigned long pMinImpulseDuration,
-                   unsigned long pCoolDownDelay = 0L );
+    ImpulseSwitch( Condition &pSwitchCondition, unsigned long pMinImpulseDuration, unsigned long pCoolDownDelay = 0L );
+
+    ~ImpulseSwitch();
 
     /**
      *  Sets up the switch. Has to be called before the switch can be used.
@@ -59,8 +59,7 @@ public:
      */
     virtual void refresh( void );
 
-protected:
-
+  protected:
     /**
      * Determines the duration since when the condition returns true.
      * @return the duration since the impulse is active in milliseconds
@@ -70,18 +69,16 @@ protected:
     /**
      * @return the minimum impulse duration in milliseconds
      */
-    inline unsigned long getMinImpulseDuration()
-    {
-        return mMinImpulseDuration;
-    }
+    inline unsigned long getMinImpulseDuration() { return mMinImpulseDuration; }
 
-protected:
+  protected:
     bool mWasSwitched; ///< Helper flag to prevent toggling of the switch after the first switch.
 
-private:
+  private:
     unsigned long mImpulseChangeTimestamp; ///< timestamp when a change of conditions state was detected.
     unsigned long mMinImpulseDuration; ///< minimum duration [milliseconds] of in impulse to change the switch state.
-    unsigned long mCoolDownDelay; ///< Switch did detect an new impulse for cool down delay [milliseconds] after a state switch.
+    unsigned long
+        mCoolDownDelay;  ///< Switch did detect an new impulse for cool down delay [milliseconds] after a state switch.
     bool mImpulseActive; ///< Flag indicating whether an impulse is active or not
 };
 

@@ -18,5 +18,30 @@
  *
  * --------------------------------------------------------------------*/
 
+#include "gtest/gtest.h"
+
 #include "../Condition.h"
 
+class TestCondition : public Condition
+{
+  public:
+    TestCondition()
+        : Condition()
+        , mValue( false )
+    {
+    }
+
+    virtual bool evaluate();
+
+    bool mValue;
+};
+
+bool TestCondition::evaluate() { return mValue; }
+
+TEST( ConditionTest, ConstructorDestructorTest )
+{
+    TestCondition lCond1;
+    TestCondition *lCond2 = new TestCondition();
+
+    delete lCond2;
+}

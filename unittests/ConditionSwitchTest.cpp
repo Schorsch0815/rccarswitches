@@ -24,11 +24,15 @@
 
 #include "Arduino.h"
 
+#include <iostream>
+using namespace std;
+
 class SimpleCondition : public Condition
 {
-public:
-    SimpleCondition() :
-            Condition(), mValue( false )
+  public:
+    SimpleCondition()
+        : Condition()
+        , mValue( false )
     {
     }
 
@@ -37,17 +41,14 @@ public:
     bool mValue;
 };
 
-bool SimpleCondition::evaluate()
-{
-    return mValue;
-}
+bool SimpleCondition::evaluate() { return mValue; }
 
 class SimpleDelayedCondition : public Condition
 {
-public:
-    SimpleDelayedCondition( unsigned long fOnDelay = 0,
-                            unsigned long fOffDelay = 0 ) :
-            Condition( fOnDelay, fOffDelay ), mValue( false )
+  public:
+    SimpleDelayedCondition( unsigned long fOnDelay = 0, unsigned long fOffDelay = 0 )
+        : Condition( fOnDelay, fOffDelay )
+        , mValue( false )
     {
     }
 
@@ -56,195 +57,215 @@ public:
     bool mValue;
 };
 
-bool SimpleDelayedCondition::evaluate()
+bool SimpleDelayedCondition::evaluate() { return mValue; }
+
+class ConditionSwitchTest : public ::testing::Test
 {
-    return mValue;
-}
+  protected:
+    virtual void SetUp() { ArduinoMockController::getInstance().reset(); }
+
+    virtual void TearDown() {}
+};
 
 // Test simple Condition switch
-TEST(ConditionSwitchTest, SetGet)
+TEST_F( ConditionSwitchTest, SetGet )
 {
     SimpleCondition lCondition;
 
-    ConditionSwitch s1(lCondition);
+    ConditionSwitch s1( lCondition );
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
     lCondition.mValue = true;
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
     lCondition.mValue = false;
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 }
 
 // Tests condition switch with "on"-delay
-TEST(ConditionSwitchTest, SetGetWithDelayedOnCondition)
+TEST_F( ConditionSwitchTest, SetGetWithDelayedOnCondition )
 {
-    SimpleDelayedCondition lCondition(500);
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
+    SimpleDelayedCondition lCondition( 500 );
 
-    ConditionSwitch s1(lCondition);
+    ConditionSwitch s1( lCondition );
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
     lCondition.mValue = true;
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
-    delay(460);
-
-    s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
-
-    delay(40);
+    delay( 499 );
 
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+
+    delay( 1 );
+
+    s1.refresh();
+    EXPECT_EQ( Switch::ON, s1.getState() );
 }
 
 // Tests condition switch with too short "on"-delay
-TEST(ConditionSwitchTest, SetGetWithDelayedOnConditionTooShortDelay)
+TEST_F( ConditionSwitchTest, SetGetWithDelayedOnConditionTooShortDelay )
 {
-    SimpleDelayedCondition lCondition(500);
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
+    SimpleDelayedCondition lCondition( 500 );
 
-    ConditionSwitch s1(lCondition);
+    ConditionSwitch s1( lCondition );
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
     lCondition.mValue = true;
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
-    delay(480);
+    delay( 490 );
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
-    delay(5);
+    delay( 9 );
 
     lCondition.mValue = false;
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
     lCondition.mValue = true;
     s1.refresh();
 
-    delay(40);
+    delay( 1 );
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 }
 
-// Tests condition switch with "on"-delay
-TEST(ConditionSwitchTest, SetGetWithDelayedOffCondition)
+// Tests condition switch with "off"-delay
+TEST_F( ConditionSwitchTest, SetGetWithDelayedOffCondition )
 {
-    SimpleDelayedCondition lCondition(0,500);
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
+    SimpleDelayedCondition lCondition( 0, 500 );
 
-    ConditionSwitch s1(lCondition);
+    ConditionSwitch s1( lCondition );
 
     lCondition.mValue = true;
 
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
     lCondition.mValue = false;
 
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
-    delay(460);
-
-    s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
-
-    delay(40);
+    delay( 499 );
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
+
+    delay( 1 );
+
+    s1.refresh();
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 }
 
 // Tests condition switch with too short "on"-delay
-TEST(ConditionSwitchTest, SetGetWithDelayedOffConditionTooShortDelay)
+TEST_F( ConditionSwitchTest, SetGetWithDelayedOffConditionTooShortDelay )
 {
-    SimpleDelayedCondition lCondition(0,500);
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
+    SimpleDelayedCondition lCondition( 0, 500 );
 
-    ConditionSwitch s1(lCondition);
+    ConditionSwitch s1( lCondition );
 
     lCondition.mValue = true;
 
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
     lCondition.mValue = false;
 
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
-    delay(480);
+    delay( 495 );
 
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
-    delay(5);
+    delay( 4 );
 
     lCondition.mValue = false;
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
     lCondition.mValue = true;
     s1.refresh();
 
-    delay(40);
+    delay( 1 );
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 }
 
 // Tests condition switch with "on"-delay
-TEST(ConditionSwitchTest, SetGetWithDifferentDelaysCondition)
+TEST_F( ConditionSwitchTest, SetGetWithDifferentDelaysCondition )
 {
-    SimpleDelayedCondition lCondition(500,100);
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
+    SimpleDelayedCondition lCondition( 500, 100 );
 
-    ConditionSwitch s1(lCondition);
+    ConditionSwitch s1( lCondition );
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
     lCondition.mValue = true;
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
 
-    delay(460);
-
-    s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
-
-    delay(40);
+    delay( 460 );
 
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+
+    delay( 40 );
+
+    s1.refresh();
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
     lCondition.mValue = false;
 
     s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
 
-    delay(97);
-
-    s1.refresh();
-    EXPECT_EQ(Switch::ON,s1.getState());
-
-    delay(3);
+    delay( 97 );
 
     s1.refresh();
-    EXPECT_EQ(Switch::OFF,s1.getState());
+    EXPECT_EQ( Switch::ON, s1.getState() );
+
+    delay( 3 );
+
+    s1.refresh();
+    EXPECT_EQ( Switch::OFF, s1.getState() );
+}
+
+// Test constructore/destructor simple Condition switch
+TEST_F( ConditionSwitchTest, ConstructorDestructorTest )
+{
+    SimpleCondition lCondition;
+
+    ConditionSwitch *s1 = new ConditionSwitch( lCondition );
+
+    delete s1;
 }

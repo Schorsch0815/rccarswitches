@@ -22,92 +22,105 @@
 
 #include "../IntervalBlinker.h"
 
+#include <iostream>
+
 #include "Arduino.h"
 
+using namespace std;
+
+class IntervalBlinkerTest : public ::testing::Test
+{
+  protected:
+    virtual void SetUp() { ArduinoMockController::getInstance().reset(); }
+
+    virtual void TearDown() {}
+};
 
 // Test normal blinker
-TEST(IntervalBlinkerTest, TestBlinkInterval600)
+TEST_F( IntervalBlinkerTest, TestBlinkInterval600 )
 {
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
     Switch s1;
 
-    IntervalBlinker lBlinker(s1,600);
+    IntervalBlinker lBlinker( s1, 600 );
 
+    ArduinoMockController::getInstance().setMilliSeconds( 1000 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::OFF,lBlinker.getState());
+    EXPECT_EQ( Switch::OFF, lBlinker.getState() );
 
-    s1.setState(Switch::ON);
+    s1.setState( Switch::ON );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::ON,lBlinker.getState());
+    EXPECT_EQ( Switch::ON, lBlinker.getState() );
 
-    delay(595);
+    ArduinoMockController::getInstance().setMilliSeconds( 1599 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::ON,lBlinker.getState());
+    EXPECT_EQ( Switch::ON, lBlinker.getState() );
 
-    delay(10);
+    ArduinoMockController::getInstance().setMilliSeconds( 1600 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::OFF,lBlinker.getState());
+    EXPECT_EQ( Switch::OFF, lBlinker.getState() );
 
-    delay(590);
+    ArduinoMockController::getInstance().setMilliSeconds( 2199 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::OFF,lBlinker.getState());
+    EXPECT_EQ( Switch::OFF, lBlinker.getState() );
 
-    delay(11);
+    ArduinoMockController::getInstance().setMilliSeconds( 2200 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::ON,lBlinker.getState());
+    EXPECT_EQ( Switch::ON, lBlinker.getState() );
 
-    delay(590);
+    ArduinoMockController::getInstance().setMilliSeconds( 2799 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::ON,lBlinker.getState());
+    EXPECT_EQ( Switch::ON, lBlinker.getState() );
 
-    s1.setState(Switch::OFF);
+    s1.setState( Switch::OFF );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::OFF,lBlinker.getState());
+    EXPECT_EQ( Switch::OFF, lBlinker.getState() );
 
-    delay(600);
+    ArduinoMockController::getInstance().setMilliSeconds( 3399 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::OFF,lBlinker.getState());
+    EXPECT_EQ( Switch::OFF, lBlinker.getState() );
 }
 
-
 // Test normal blinker
-TEST(IntervalBlinkerTest, TestBlinkInterval100)
+TEST_F( IntervalBlinkerTest, TestBlinkInterval100 )
 {
+    ArduinoMockController::getInstance().setTimerMode( ArduinoMockController::MANUAL_TIMER_MODE );
     Switch s1;
 
-    IntervalBlinker lBlinker(s1,100);
+    IntervalBlinker lBlinker( s1, 100 );
 
     lBlinker.refresh();
-    EXPECT_EQ(Switch::OFF,lBlinker.getState());
+    EXPECT_EQ( Switch::OFF, lBlinker.getState() );
 
-    s1.setState(Switch::ON);
+    s1.setState( Switch::ON );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::ON,lBlinker.getState());
+    EXPECT_EQ( Switch::ON, lBlinker.getState() );
 
-    delay(95);
+    delay( 95 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::ON,lBlinker.getState());
+    EXPECT_EQ( Switch::ON, lBlinker.getState() );
 
-    delay(7);
+    delay( 7 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::OFF,lBlinker.getState());
+    EXPECT_EQ( Switch::OFF, lBlinker.getState() );
 
-    delay(95);
+    delay( 95 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::OFF,lBlinker.getState());
+    EXPECT_EQ( Switch::OFF, lBlinker.getState() );
 
-    delay(5);
+    delay( 5 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::ON,lBlinker.getState());
+    EXPECT_EQ( Switch::ON, lBlinker.getState() );
 
-    delay(95);
+    delay( 95 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::ON,lBlinker.getState());
+    EXPECT_EQ( Switch::ON, lBlinker.getState() );
 
-    s1.setState(Switch::OFF);
+    s1.setState( Switch::OFF );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::OFF,lBlinker.getState());
+    EXPECT_EQ( Switch::OFF, lBlinker.getState() );
 
-    delay(5);
+    delay( 5 );
     lBlinker.refresh();
-    EXPECT_EQ(Switch::OFF,lBlinker.getState());
+    EXPECT_EQ( Switch::OFF, lBlinker.getState() );
 }

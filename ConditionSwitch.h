@@ -36,14 +36,16 @@
 class ConditionSwitch : public Switch
 {
 
-public:
+  public:
     /**
      * Constructor. It requires a condition object, which will be evaluated to determine
      * the state of the switch.
      *
      * @param pSwitchCondition condition object
      */
-    ConditionSwitch( Condition & pSwitchCondition );
+    ConditionSwitch( Condition &pSwitchCondition );
+
+    ~ConditionSwitch();
 
     /**
      *  Sets up the switch. Has to be called before the switch can be used.
@@ -55,19 +57,15 @@ public:
      */
     virtual void refresh( void );
 
-protected:
-
+  protected:
     /**
      * Evaluates the conditions passed during construction.
      * @return true if the condition was evaluated to true otherwise false
      */
-    inline bool evaluateCondition( void )
-    {
-        return (mSwitchCondition)();
-    }
+    inline bool evaluateCondition( void ) { return ( mSwitchCondition )(); }
 
-private:
-    Condition & mSwitchCondition; ///< reference to the condition object
+  private:
+    Condition &mSwitchCondition; ///< reference to the condition object
 };
 
 #endif /* SWITCH_H_ */

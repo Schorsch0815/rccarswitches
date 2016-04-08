@@ -39,3 +39,4 @@
 *.md.html
 /Coverage Unittest/
 /Debug Unittests/
+/Gcov Unittests/
