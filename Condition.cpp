@@ -20,7 +20,7 @@
 
 #include "Condition.h"
 
-#include <cstdio>
+#include <stdio.h>
 #include "Arduino.h"
 
 Condition::Condition( unsigned long fOnDelay, unsigned long fOffDelay ) :
