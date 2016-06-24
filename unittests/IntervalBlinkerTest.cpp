@@ -30,10 +30,15 @@ using namespace std;
 
 class IntervalBlinkerTest : public ::testing::Test
 {
-  protected:
-    virtual void SetUp() { ArduinoMockController::getInstance().reset(); }
+protected:
+    virtual void SetUp()
+    {
+        ArduinoMockController::getInstance().reset();
+    }
 
-    virtual void TearDown() {}
+    virtual void TearDown()
+    {
+    }
 };
 
 // Test normal blinker

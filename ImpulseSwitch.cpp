@@ -36,12 +36,17 @@ ImpulseSwitch::ImpulseSwitch( Condition &pSwitchCondition,
 {
 }
 
-ImpulseSwitch::~ImpulseSwitch() {}
+ImpulseSwitch::~ImpulseSwitch()
+{
+}
 
 /**
  * Calls the setup method of the parent class
  */
-void ImpulseSwitch::setup() { ConditionSwitch::setup(); }
+void ImpulseSwitch::setup()
+{
+    ConditionSwitch::setup();
+}
 
 /**
  * The refresh methods checks whether the current impulse is longer or equal active as the minimum impulse duration. If

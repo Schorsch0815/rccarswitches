@@ -34,7 +34,8 @@ public:
      */
     typedef enum
     {
-        OFF, ON
+        OFF,
+        ON
     } SwitchState_t;
 
     /**
@@ -79,7 +80,8 @@ public:
      */
     inline SwitchState_t getInvertedState( void )
     {
-        return (ON == mState) ? OFF : ON;;
+        return ( ON == mState ) ? OFF : ON;
+        ;
     }
 
 private:

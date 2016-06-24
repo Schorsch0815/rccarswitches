@@ -18,7 +18,9 @@ IntervalBlinker::IntervalBlinker( Switch &pSwitch, unsigned long pIntervalDurati
 {
 }
 
-IntervalBlinker::~IntervalBlinker() {}
+IntervalBlinker::~IntervalBlinker()
+{
+}
 
 void IntervalBlinker::refresh()
 {

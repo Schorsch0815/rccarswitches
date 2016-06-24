@@ -24,7 +24,7 @@
 
 class TestCondition : public Condition
 {
-  public:
+public:
     TestCondition()
         : Condition()
         , mValue( false )
@@ -36,7 +36,10 @@ class TestCondition : public Condition
     bool mValue;
 };
 
-bool TestCondition::evaluate() { return mValue; }
+bool TestCondition::evaluate()
+{
+    return mValue;
+}
 
 TEST( ConditionTest, ConstructorDestructorTest )
 {

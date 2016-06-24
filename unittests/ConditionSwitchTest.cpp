@@ -29,7 +29,7 @@ using namespace std;
 
 class SimpleCondition : public Condition
 {
-  public:
+public:
     SimpleCondition()
         : Condition()
         , mValue( false )
@@ -41,11 +41,14 @@ class SimpleCondition : public Condition
     bool mValue;
 };
 
-bool SimpleCondition::evaluate() { return mValue; }
+bool SimpleCondition::evaluate()
+{
+    return mValue;
+}
 
 class SimpleDelayedCondition : public Condition
 {
-  public:
+public:
     SimpleDelayedCondition( unsigned long fOnDelay = 0, unsigned long fOffDelay = 0 )
         : Condition( fOnDelay, fOffDelay )
         , mValue( false )
@@ -57,14 +60,22 @@ class SimpleDelayedCondition : public Condition
     bool mValue;
 };
 
-bool SimpleDelayedCondition::evaluate() { return mValue; }
+bool SimpleDelayedCondition::evaluate()
+{
+    return mValue;
+}
 
 class ConditionSwitchTest : public ::testing::Test
 {
-  protected:
-    virtual void SetUp() { ArduinoMockController::getInstance().reset(); }
+protected:
+    virtual void SetUp()
+    {
+        ArduinoMockController::getInstance().reset();
+    }
 
-    virtual void TearDown() {}
+    virtual void TearDown()
+    {
+    }
 };
 
 // Test simple Condition switch

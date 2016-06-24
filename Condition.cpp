@@ -23,12 +23,12 @@
 #include <stdio.h>
 #include "Arduino.h"
 
-Condition::Condition( unsigned long fOnDelay, unsigned long fOffDelay ) :
-        mOnDelay( fOnDelay ),
-        mOffDelay( fOffDelay ),
-        mChangeDetected( millis() ),
-        mCurrentState( false ),
-        mUpcommingState( false )
+Condition::Condition( unsigned long fOnDelay, unsigned long fOffDelay )
+    : mOnDelay( fOnDelay )
+    , mOffDelay( fOffDelay )
+    , mChangeDetected( millis() )
+    , mCurrentState( false )
+    , mUpcommingState( false )
 {
 }
 
@@ -40,14 +40,14 @@ bool Condition::operator()()
 {
     bool lState = evaluate();
     unsigned long lCurrentMillis = millis();
-    unsigned long lDelay = (mCurrentState ? mOffDelay : mOnDelay);
+    unsigned long lDelay = ( mCurrentState ? mOffDelay : mOnDelay );
 
-    if (0 < lDelay)
+    if ( 0 < lDelay )
     {
-        if (mCurrentState != mUpcommingState)
+        if ( mCurrentState != mUpcommingState )
         {
             // last time we detect a change of condition
-            if (lState == mCurrentState)
+            if ( lState == mCurrentState )
             {
                 // condition falls back to current state before delay was passed
                 mUpcommingState = lState;
@@ -56,7 +56,7 @@ bool Condition::operator()()
             else
             {
                 // change will be detected if last change least longer than configured delay
-                if (mChangeDetected + lDelay <= lCurrentMillis)
+                if ( mChangeDetected + lDelay <= lCurrentMillis )
                 {
                     mCurrentState = lState;
                     mChangeDetected = lCurrentMillis;
@@ -65,13 +65,12 @@ bool Condition::operator()()
         }
         else
         {
-            if (lState != mCurrentState)
+            if ( lState != mCurrentState )
             {
                 // a state change was recognized and we have to remember the new upcoming state
                 mUpcommingState = lState;
                 mChangeDetected = lCurrentMillis;
             }
-
         }
     }
     else

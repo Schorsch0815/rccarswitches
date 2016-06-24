@@ -45,7 +45,7 @@ public:
      * @param pMinImpulseDuration minimum impulse duration in milliseconds.
      * @param pCoolDownDelay the impulse cool down delay in milliseconds, the default value is 0.
      */
-    SteppingSwitch( Condition & pSwitchCondition,
+    SteppingSwitch( Condition &pSwitchCondition,
                     unsigned int pNumberOfSteps,
                     unsigned long pMinImpulseDuration,
                     unsigned long pCoolDownDelay = 0L );
@@ -82,7 +82,7 @@ public:
 
 private:
     unsigned int mNumberOfSteps; ///< Maximum number of steps
-    unsigned int mCurrentStep; ///< Current step number [0 &lt;= current step number &lt; max steps]
+    unsigned int mCurrentStep;   ///< Current step number [0 &lt;= current step number &lt; max steps]
 };
 
 #endif /* STEPPINGSWITCH_H_ */

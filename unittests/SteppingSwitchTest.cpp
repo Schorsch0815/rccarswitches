@@ -26,7 +26,7 @@
 
 class SimpleSteppingSwitchCondition : public Condition
 {
-  public:
+public:
     SimpleSteppingSwitchCondition()
         : Condition()
         , mValue( false )
@@ -38,14 +38,22 @@ class SimpleSteppingSwitchCondition : public Condition
     bool mValue;
 };
 
-bool SimpleSteppingSwitchCondition::evaluate() { return mValue; }
+bool SimpleSteppingSwitchCondition::evaluate()
+{
+    return mValue;
+}
 
 class SteppingSwitchTest : public ::testing::Test
 {
-  protected:
-    virtual void SetUp() { ArduinoMockController::getInstance().reset(); }
+protected:
+    virtual void SetUp()
+    {
+        ArduinoMockController::getInstance().reset();
+    }
 
-    virtual void TearDown() {}
+    virtual void TearDown()
+    {
+    }
 };
 
 // Tests stepping switch but with too short impulse

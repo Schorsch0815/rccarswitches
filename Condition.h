@@ -31,7 +31,8 @@
  * internal detected change to the outside. There exists one delay when the condition raises from true to
  * false and a second one, which controls the delay from state false to true.
  *
- * When writing an own condition, at least the virtual method evaluate() has to be overloaded. It should return reflect the
+ * When writing an own condition, at least the virtual method evaluate() has to be overloaded. It should return reflect
+ *the
  * value of the condition and can be implemented as required.
  */
 class Condition
@@ -67,11 +68,11 @@ private:
      */
     virtual bool evaluate() = 0;
 
-    unsigned long mOnDelay;           ///< delay in milliseconds
-    unsigned long mOffDelay;           ///< delay in milliseconds
+    unsigned long mOnDelay;        ///< delay in milliseconds
+    unsigned long mOffDelay;       ///< delay in milliseconds
     unsigned long mChangeDetected; ///< holds the time stamp the condition change was detected
-    bool mCurrentState;    ///< current propagate value of the switch
-    bool mUpcommingState;  ///< upcoming state of the last call to evaluate
+    bool mCurrentState;            ///< current propagate value of the switch
+    bool mUpcommingState;          ///< upcoming state of the last call to evaluate
 };
 
 #endif /* CONDITION_H_ */

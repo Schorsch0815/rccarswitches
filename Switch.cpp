@@ -20,8 +20,8 @@
 
 #include "Switch.h"
 
-Switch::Switch() :
-        mState( OFF )
+Switch::Switch()
+    : mState( OFF )
 {
 }
 

@@ -30,7 +30,7 @@ using namespace std;
 
 class SimpleImpulseSwitchCondition : public Condition
 {
-  public:
+public:
     SimpleImpulseSwitchCondition()
         : Condition()
         , mValue( false )
@@ -42,14 +42,22 @@ class SimpleImpulseSwitchCondition : public Condition
     bool mValue;
 };
 
-bool SimpleImpulseSwitchCondition::evaluate() { return mValue; }
+bool SimpleImpulseSwitchCondition::evaluate()
+{
+    return mValue;
+}
 
 class ImpulseSwitchTest : public ::testing::Test
 {
-  protected:
-    virtual void SetUp() { ArduinoMockController::getInstance().reset(); }
+protected:
+    virtual void SetUp()
+    {
+        ArduinoMockController::getInstance().reset();
+    }
 
-    virtual void TearDown() {}
+    virtual void TearDown()
+    {
+    }
 };
 
 // Tests impulse switch but with too short impulse

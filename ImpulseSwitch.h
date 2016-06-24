@@ -37,7 +37,7 @@
  */
 class ImpulseSwitch : public ConditionSwitch
 {
-  public:
+public:
     /**
      * Constructor. Creates an impulse switch and allows to specify a condition, a minimum impulse duration
      * and the cool down delay.
@@ -59,7 +59,7 @@ class ImpulseSwitch : public ConditionSwitch
      */
     virtual void refresh( void );
 
-  protected:
+protected:
     /**
      * Determines the duration since when the condition returns true.
      * @return the duration since the impulse is active in milliseconds
@@ -69,12 +69,15 @@ class ImpulseSwitch : public ConditionSwitch
     /**
      * @return the minimum impulse duration in milliseconds
      */
-    inline unsigned long getMinImpulseDuration() { return mMinImpulseDuration; }
+    inline unsigned long getMinImpulseDuration()
+    {
+        return mMinImpulseDuration;
+    }
 
-  protected:
+protected:
     bool mWasSwitched; ///< Helper flag to prevent toggling of the switch after the first switch.
 
-  private:
+private:
     unsigned long mImpulseChangeTimestamp; ///< timestamp when a change of conditions state was detected.
     unsigned long mMinImpulseDuration; ///< minimum duration [milliseconds] of in impulse to change the switch state.
     unsigned long

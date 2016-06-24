@@ -26,14 +26,22 @@ ConditionSwitch::ConditionSwitch( Condition &pSwitchCondition )
 {
 }
 
-ConditionSwitch::~ConditionSwitch() {}
+ConditionSwitch::~ConditionSwitch()
+{
+}
 
 /**
  * Calls the setup method of the parent class
  */
-void ConditionSwitch::setup() { Switch::setup(); }
+void ConditionSwitch::setup()
+{
+    Switch::setup();
+}
 
 /**
  * Changes the state of the switch by evaluating the condition object.
  */
-void ConditionSwitch::refresh( void ) { setState( evaluateCondition() ? ON : OFF ); }
+void ConditionSwitch::refresh( void )
+{
+    setState( evaluateCondition() ? ON : OFF );
+}

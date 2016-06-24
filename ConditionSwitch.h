@@ -36,7 +36,7 @@
 class ConditionSwitch : public Switch
 {
 
-  public:
+public:
     /**
      * Constructor. It requires a condition object, which will be evaluated to determine
      * the state of the switch.
@@ -57,14 +57,17 @@ class ConditionSwitch : public Switch
      */
     virtual void refresh( void );
 
-  protected:
+protected:
     /**
      * Evaluates the conditions passed during construction.
      * @return true if the condition was evaluated to true otherwise false
      */
-    inline bool evaluateCondition( void ) { return ( mSwitchCondition )(); }
+    inline bool evaluateCondition( void )
+    {
+        return ( mSwitchCondition )();
+    }
 
-  private:
+private:
     Condition &mSwitchCondition; ///< reference to the condition object
 };
 

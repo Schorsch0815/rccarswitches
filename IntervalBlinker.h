@@ -17,7 +17,7 @@
  */
 class IntervalBlinker : public Switch
 {
-  public:
+public:
     IntervalBlinker( Switch &pSwitch, unsigned long pIntervalDuration );
     virtual ~IntervalBlinker();
 
@@ -26,7 +26,7 @@ class IntervalBlinker : public Switch
      */
     virtual void refresh();
 
-  private:
+private:
     Switch &mSwitch;
     unsigned long mLastBlinkTimestamp;
     unsigned long mIntervalDuration;

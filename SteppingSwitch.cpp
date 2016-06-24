@@ -20,13 +20,13 @@
 
 #include "SteppingSwitch.h"
 
-SteppingSwitch::SteppingSwitch( Condition & pSwitchCondition,
+SteppingSwitch::SteppingSwitch( Condition &pSwitchCondition,
                                 unsigned int pNumberOfSteps,
                                 unsigned long pMinImpulseDuration,
-                                unsigned long pCoolDownDelay ) :
-        ImpulseSwitch( pSwitchCondition, pMinImpulseDuration, pCoolDownDelay ),
-        mNumberOfSteps( pNumberOfSteps ),
-        mCurrentStep( 0 )
+                                unsigned long pCoolDownDelay )
+    : ImpulseSwitch( pSwitchCondition, pMinImpulseDuration, pCoolDownDelay )
+    , mNumberOfSteps( pNumberOfSteps )
+    , mCurrentStep( 0 )
 {
 }
 
@@ -47,7 +47,7 @@ void SteppingSwitch::setup()
  */
 void SteppingSwitch::setState( SwitchState_t pState )
 {
-    if (OFF == pState)
+    if ( OFF == pState )
     {
         ImpulseSwitch::setState( pState );
         mCurrentStep = 0;
@@ -61,16 +61,16 @@ void SteppingSwitch::setState( SwitchState_t pState )
  */
 void SteppingSwitch::refresh( void )
 {
-    if (getMinImpulseDuration() <= getImpulseActiveDuration())
+    if ( getMinImpulseDuration() <= getImpulseActiveDuration() )
     {
         // to prevent toggling when impulse is still "active" but switch was changed during this impulse
-        if (!mWasSwitched)
+        if ( !mWasSwitched )
         {
             // toggle switch state
             ++mCurrentStep;
             mWasSwitched = true;
 
-            if (mCurrentStep >= mNumberOfSteps)
+            if ( mCurrentStep >= mNumberOfSteps )
             {
                 ImpulseSwitch::setState( OFF );
                 mCurrentStep = 0;
@@ -86,4 +86,3 @@ void SteppingSwitch::refresh( void )
         mWasSwitched = false;
     }
 }
-
