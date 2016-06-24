@@ -1,174 +1,127 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
-		<cconfiguration id="it.baeyens.arduino.core.toolChain.release.1128593604">
-			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="it.baeyens.arduino.core.toolChain.release.1128593604" moduleId="org.eclipse.cdt.core.settings" name="Release">
+		<cconfiguration id="cdt.managedbuild.config.gnu.exe.debug.1594565309">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.exe.debug.1594565309" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<externalSettings/>
 				<extensions>
-					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.autotools.core.ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" description="" id="it.baeyens.arduino.core.toolChain.release.1128593604" name="Release" parent="org.eclipse.cdt.build.core.emptycfg">
-					<folderInfo id="it.baeyens.arduino.core.toolChain.release.1128593604.342253142" name="/" resourcePath="">
-						<toolChain id="it.baeyens.arduino.core.toolChain.release.1363817363" name="Arduino Toolchain">
-							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="it.baeyens.arduino.targetplatform.1942345908" name="Arduino Target" osList="all"/>
-							<builder buildPath="${workspace_loc:/rccarswitches}/Release" id="it.baeyens.arduino.sketch.builder.2092254258" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder"/>
+				<configuration artifactName="testrunner" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.exe.debug.1594565309" name="Debug" parent="cdt.managedbuild.config.gnu.exe.debug">
+					<folderInfo id="cdt.managedbuild.config.gnu.exe.debug.1594565309." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.exe.debug.735995374" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.exe.debug">
+							<targetPlatform id="cdt.managedbuild.target.gnu.platform.exe.debug.1632401660" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.exe.debug"/>
+							<builder buildPath="${workspace_loc:/rccarlightswitches}/Debug" id="cdt.managedbuild.target.gnu.builder.exe.debug.1551868367" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.exe.debug"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.293378993" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool command="g++" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.403422290" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug">
+								<option id="gnu.cpp.compiler.exe.debug.option.optimization.level.1729855245" name="Optimization Level" superClass="gnu.cpp.compiler.exe.debug.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.exe.debug.option.debugging.level.1292929935" name="Debug Level" superClass="gnu.cpp.compiler.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.1857243538" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="${GTEST_PATH}/include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/arduinomock}&quot;"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.debugging.codecov.1060421461" superClass="gnu.cpp.compiler.option.debugging.codecov" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.876956951" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1184531764" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug">
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.exe.debug.option.optimization.level.35906675" name="Optimization Level" superClass="gnu.c.compiler.exe.debug.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="gnu.c.compiler.exe.debug.option.debugging.level.1782908710" name="Debug Level" superClass="gnu.c.compiler.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.include.paths.405762372" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${GTEST_PATH}/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/arduinomock}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.659477096" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.770304931" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.278740105" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
+								<option id="gnu.cpp.link.option.paths.627632206" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${GTEST_PATH}/lib&quot;"/>
+								</option>
+								<option id="gnu.cpp.link.option.libs.1394853466" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="gtest"/>
+									<listOptionValue builtIn="false" value="gtest_main"/>
+									<listOptionValue builtIn="false" value="pthread"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.34629833" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.exe.debug.18797543" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.exe.debug">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.234760660" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Libraries/*/?xamples|Libraries/*/?xtras" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="arduinomock/unittests" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
-		<cconfiguration id="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687">
-			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687" moduleId="org.eclipse.cdt.core.settings" name="Debug Unittests">
+		<cconfiguration id="cdt.managedbuild.config.gnu.exe.release.656615772">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.exe.release.656615772" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<externalSettings/>
 				<extensions>
-					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" description="Configuration for unittests od rccar switches" id="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687" name="Debug Unittests" parent="org.eclipse.cdt.build.core.emptycfg">
-					<folderInfo id="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687." name="/" resourcePath="">
-						<toolChain id="cdt.managedbuild.toolchain.gnu.base.982805653" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
-							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.base.1258104218" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
-							<builder buildPath="${workspace_loc:/rccarswitches}/Debug Unittests" id="cdt.managedbuild.target.gnu.builder.base.785995853" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.base"/>
-							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1837346764" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.852168651" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
-								<option id="gnu.cpp.compiler.option.include.paths.1265116470" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.exe.release.656615772" name="Release" parent="cdt.managedbuild.config.gnu.exe.release">
+					<folderInfo id="cdt.managedbuild.config.gnu.exe.release.656615772." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.exe.release.1216927728" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.exe.release">
+							<targetPlatform id="cdt.managedbuild.target.gnu.platform.exe.release.1529077605" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.exe.release"/>
+							<builder buildPath="${workspace_loc:/rccarlightswitches}/Release" id="cdt.managedbuild.target.gnu.builder.exe.release.1868052599" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.exe.release"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1965443628" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.215812732" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release">
+								<option id="gnu.cpp.compiler.exe.release.option.optimization.level.1519752060" name="Optimization Level" superClass="gnu.cpp.compiler.exe.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.exe.release.option.debugging.level.1598180819" name="Debug Level" superClass="gnu.cpp.compiler.exe.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.1542825526" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="${GTEST_PATH}/include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/arduinomock}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1697554675" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.release.497279292" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.release">
+								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.exe.release.option.optimization.level.1663369026" name="Optimization Level" superClass="gnu.c.compiler.exe.release.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.exe.release.option.debugging.level.1392212554" name="Debug Level" superClass="gnu.c.compiler.exe.release.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.include.paths.2056725416" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${GTEST_PATH}/include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/variant}&quot;"/>
-								</option>
-								<option id="gnu.cpp.compiler.option.debugging.other.534694844" name="Other debugging flags" superClass="gnu.cpp.compiler.option.debugging.other" value="" valueType="string"/>
-								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.365514270" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
-							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1139296902" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
-								<option id="gnu.c.compiler.option.include.paths.221316386" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/arduinomock}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/variant}&quot;"/>
 								</option>
-								<option id="gnu.c.compiler.option.debugging.other.1630764942" name="Other debugging flags" superClass="gnu.c.compiler.option.debugging.other" value="" valueType="string"/>
-								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2099386287" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.373318333" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.1517096900" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base"/>
-							<tool commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}testrunner ${INPUTS}" id="cdt.managedbuild.tool.gnu.cpp.linker.base.1733999644" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base">
-								<option id="gnu.cpp.link.option.libs.664932147" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.release.135673836" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.release"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.release.705475189" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.release">
+								<option id="gnu.cpp.link.option.libs.743074502" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="gtest"/>
 									<listOptionValue builtIn="false" value="gtest_main"/>
 									<listOptionValue builtIn="false" value="pthread"/>
 								</option>
-								<option id="gnu.cpp.link.option.paths.459924718" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${GTEST_PATH}/lib&quot;"/>
-								</option>
-								<option id="gnu.cpp.link.option.flags.958455616" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="" valueType="string"/>
-								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1501407991" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.71268197" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
 								</inputType>
 							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.assembler.base.910202503" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base">
-								<option id="gnu.both.asm.option.include.paths.1269524201" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/core}&quot;"/>
-								</option>
-								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1695505238" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.exe.release.2125318381" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.exe.release">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.2115012299" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="arduinomock/unittests|arduino|Libraries/*/?xamples|Libraries/*/?xtras" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-					</sourceEntries>
-				</configuration>
-			</storageModule>
-			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-		</cconfiguration>
-		<cconfiguration id="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687.1852733169">
-			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687.1852733169" moduleId="org.eclipse.cdt.core.settings" name="Gcov Unittests">
-				<externalSettings/>
-				<extensions>
-					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
-				</extensions>
-			</storageModule>
-			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" description="" id="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687.1852733169" name="Gcov Unittests" parent="org.eclipse.cdt.build.core.emptycfg">
-					<folderInfo id="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687.1852733169." name="/" resourcePath="">
-						<toolChain id="cdt.managedbuild.toolchain.gnu.base.1083281604" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
-							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.base.1760087150" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
-							<builder buildPath="${workspace_loc:/rccarswitches}/Debug Unittests" id="cdt.managedbuild.target.gnu.builder.base.1853215305" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.base"/>
-							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1713124078" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.930796183" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
-								<option id="gnu.cpp.compiler.option.include.paths.753130160" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/arduinomock}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${GTEST_PATH}/include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/variant}&quot;"/>
-								</option>
-								<option id="gnu.cpp.compiler.option.optimization.level.1127617144" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.option.dialect.std.150592004" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.default" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.option.debugging.other.1124816248" name="Other debugging flags" superClass="gnu.cpp.compiler.option.debugging.other" value="-ftest-coverage -fprofile-arcs" valueType="string"/>
-								<option id="gnu.cpp.compiler.option.debugging.codecov.1846044357" superClass="gnu.cpp.compiler.option.debugging.codecov" value="true" valueType="boolean"/>
-								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.77502483" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
-							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.125751013" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
-								<option id="gnu.c.compiler.option.include.paths.1705176794" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/arduinomock}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/variant}&quot;"/>
-								</option>
-								<option id="gnu.c.compiler.option.optimization.level.971318937" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" value="gnu.c.optimization.level.none" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.debugging.other.1756138931" name="Other debugging flags" superClass="gnu.c.compiler.option.debugging.other" value="-ftest-coverage -fprofile-arcs" valueType="string"/>
-								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.300329882" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
-							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.339919604" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base"/>
-							<tool commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}testrunner ${INPUTS}" id="cdt.managedbuild.tool.gnu.cpp.linker.base.253737991" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base">
-								<option id="gnu.cpp.link.option.libs.131298360" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" value="gtest"/>
-									<listOptionValue builtIn="false" value="gtest_main"/>
-									<listOptionValue builtIn="false" value="pthread"/>
-									<listOptionValue builtIn="false" value="gcov"/>
-								</option>
-								<option id="gnu.cpp.link.option.paths.1892542063" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${GTEST_PATH}/lib&quot;"/>
-								</option>
-								<option id="gnu.cpp.link.option.flags.488804215" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-ftest-coverage -fprofile-arcs" valueType="string"/>
-								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1112099665" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
-									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
-									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
-								</inputType>
-							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.assembler.base.969003166" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base">
-								<option id="gnu.both.asm.option.include.paths.55014024" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/rccarswitches/arduino/core}&quot;"/>
-								</option>
-								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1845400577" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
-							</tool>
-						</toolChain>
-					</folderInfo>
-					<sourceEntries>
-						<entry excluding="arduinomock/unittests|arduino|Libraries/*/?xamples|Libraries/*/?xtras" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="arduinomock/unittests" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -176,37 +129,31 @@
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="rccarswitches.null.436238673" name="rccarswitches"/>
+		<project id="rccarlightswitches.cdt.managedbuild.target.gnu.exe.1246055042" name="Executable" projectType="cdt.managedbuild.target.gnu.exe"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.1594565309;cdt.managedbuild.config.gnu.exe.debug.1594565309.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.403422290;cdt.managedbuild.tool.gnu.cpp.compiler.input.876956951">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.656615772;cdt.managedbuild.config.gnu.exe.release.656615772.;cdt.managedbuild.tool.gnu.c.compiler.exe.release.497279292;cdt.managedbuild.tool.gnu.c.compiler.input.373318333">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.1594565309;cdt.managedbuild.config.gnu.exe.debug.1594565309.;cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1184531764;cdt.managedbuild.tool.gnu.c.compiler.input.659477096">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.656615772;cdt.managedbuild.config.gnu.exe.release.656615772.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.215812732;cdt.managedbuild.tool.gnu.cpp.compiler.input.1697554675">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
-		<configuration configurationName="Release">
-			<resource resourceType="PROJECT" workspacePath="/rccarswitches"/>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/rccarlightswitches"/>
 		</configuration>
-		<configuration configurationName="Debug Unittests">
-			<resource resourceType="PROJECT" workspacePath="/rccarswitches"/>
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/rccarlightswitches"/>
 		</configuration>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.150775106;cdt.managedbuild.config.gnu.exe.debug.150775106.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1478902269;cdt.managedbuild.tool.gnu.cpp.compiler.input.1809997318">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.150775106;cdt.managedbuild.config.gnu.exe.debug.150775106.;cdt.managedbuild.tool.gnu.c.compiler.exe.debug.681760315;cdt.managedbuild.tool.gnu.c.compiler.input.1733889534">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.273775448;cdt.managedbuild.config.gnu.exe.release.273775448.;cdt.managedbuild.tool.gnu.c.compiler.exe.release.13637753;cdt.managedbuild.tool.gnu.c.compiler.input.1580686607">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687;it.baeyens.arduino.core.toolChain.release.1128593604.1341117687.;cdt.managedbuild.tool.gnu.cpp.compiler.base.852168651;cdt.managedbuild.tool.gnu.cpp.compiler.input.365514270">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="it.baeyens.arduino.core.toolChain.release.1128593604.1341117687;it.baeyens.arduino.core.toolChain.release.1128593604.1341117687.;cdt.managedbuild.tool.gnu.c.compiler.base.1139296902;cdt.managedbuild.tool.gnu.c.compiler.input.2099386287">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.273775448;cdt.managedbuild.config.gnu.exe.release.273775448.;cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.1536714410;cdt.managedbuild.tool.gnu.cpp.compiler.input.1894140682">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-	</storageModule>
 </cproject>

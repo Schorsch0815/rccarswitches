@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>rccarswitches</name>
+	<name>rccarlightswitches</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -23,27 +23,5 @@
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
-		<nature>it.baeyens.arduinonature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>arduino/core</name>
-			<type>2</type>
-			<locationURI>ArduinoPlatformPath</locationURI>
-		</link>
-	</linkedResources>
-	<variableList>
-		<variable>
-			<name>ArduinoHardwareLibPath</name>
-			<value>file:/home/ejocsch/bin/arduino-1.6.5/hardware/arduino/avr/libraries</value>
-		</variable>
-		<variable>
-			<name>ArduinoPinPath</name>
-			<value>file:/home/ejocsch/bin/arduino-1.6.5/hardware/arduino/avr</value>
-		</variable>
-		<variable>
-			<name>ArduinoPlatformPath</name>
-			<value>file:/home/ejocsch/bin/arduino-1.6.5/hardware/arduino/avr</value>
-		</variable>
-	</variableList>
 </projectDescription>
