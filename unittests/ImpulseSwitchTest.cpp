@@ -78,8 +78,8 @@ TEST_F( ImpulseSwitchTest, ImpulseToShort )
     s1.refresh();
     EXPECT_EQ( Switch::OFF, s1.getState() );
 
-    delay( 999 ); // TODO test should fail because 1 +999 >= 1000 => switch must be active! => ???
-    cout << "millis =" << millis() << endl;
+    delay( 999 );
+
     s1.refresh();
     EXPECT_EQ( Switch::OFF, s1.getState() );
 }
